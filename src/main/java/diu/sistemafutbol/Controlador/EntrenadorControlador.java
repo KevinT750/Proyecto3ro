@@ -46,10 +46,12 @@ public class EntrenadorControlador {
 
                 System.out.println("Bienvenido " + Usuario);
                 JOptionPane.showMessageDialog(null, "Bienvenido " + Usuario);
+                ejecutar.close();
 
                 return true;
             } else {
                 System.out.println("Usuario o Contraseña incorrecto");
+                 ejecutar.close();
                 return false;
             }
         } catch (Exception e) {

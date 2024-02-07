@@ -4,7 +4,12 @@
  */
 package DIU.Vista;
 
+import com.mysql.cj.protocol.a.LocalDateTimeValueEncoder;
+import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
+import java.awt.Color;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -12,14 +17,14 @@ import diu.sistemafutbol.Modelo.Estudiante;
  */
 public class CrearEstudiante extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CrearEstudiante
-     */
+    Estudiante es = new Estudiante();
+
     public CrearEstudiante() {
         initComponents();
         Estudiante.provinciasEcuador(cbProvincia);
         Estudiante.mes(cbMes);
         Estudiante.posicion(cbPosicion);
+        txtEdad.setEditable(false);
     }
 
     /**
@@ -48,7 +53,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jblCedula2 = new javax.swing.JLabel();
         jblCedula3 = new javax.swing.JLabel();
         cbCanton = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbNacionalidad = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         cbAño = new javax.swing.JComboBox<>();
         cbMes = new javax.swing.JComboBox<>();
@@ -66,6 +71,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         txtPeso = new javax.swing.JTextField();
         jblCedula6 = new javax.swing.JLabel();
         txtAltura = new javax.swing.JTextField();
+        txtGuardar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -138,10 +144,10 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Costa Rica", "Cuba", "Ecuador", "El Salvador", "Guatemala", "Haití", "Honduras", "México", "Nicaragua", "Panamá", "Paraguay", "Perú", "República Dominicana", "Uruguay", "Venezuela" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Costa Rica", "Cuba", "Ecuador", "El Salvador", "Guatemala", "Haití", "Honduras", "México", "Nicaragua", "Panamá", "Paraguay", "Perú", "República Dominicana", "Uruguay", "Venezuela" }));
+        cbNacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbNacionalidadActionPerformed(evt);
             }
         });
 
@@ -193,6 +199,13 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
 
         txtAltura.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
+        txtGuardar.setText("Guardar");
+        txtGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGuardarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -209,7 +222,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jblCedula2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblCedula3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(cbCanton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(cbNacionalidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(cbAño, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(cbMes, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -227,6 +240,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(txtPeso, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblCedula6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtAltura, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -258,7 +272,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jComboBox1, 0, 253, Short.MAX_VALUE)
+                                        .addComponent(cbNacionalidad, 0, 253, Short.MAX_VALUE)
                                         .addComponent(cbProvincia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -312,9 +326,13 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
                         .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jblCedula6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(txtGuardar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +372,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
                     .addComponent(jblCedula4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jblCedula3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,10 +386,11 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblCedula5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jblCedula6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                    .addComponent(jblCedula6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(txtGuardar)
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -389,20 +408,20 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCantonActionPerformed
-        
+
     }//GEN-LAST:event_cbCantonActionPerformed
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-        
+
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
         Estudiante.cantonesPorProvincia(cbProvincia, cbCanton);
     }//GEN-LAST:event_cbProvinciaActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNacionalidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbNacionalidadActionPerformed
 
     private void cbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMesActionPerformed
         Estudiante.dia(cbMes, cbDia);
@@ -416,16 +435,119 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSubPosicionActionPerformed
 
+    private void txtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuardarActionPerformed
 
+        // VALIDAR SI LA CEDULA TIENE 10 DIGITOS Y SI SOLO SON NUMEROS ENTEROS
+        validarCedula(txtCedula.getText());
+
+        //VALIDAR SI LOS CAMPOS NOMBRE Y APELLIDO INICIAN CON MAYUSCULA
+        validarNP(txtNombre.getText(), txtApellido.getText());
+
+        //VALIDAR SI EL CAMPO TELEFONO CUMPLE CON EL REQUISITO DE 09 Y 8 DIGITOS MAS
+        validarTelefono(txtTelefono.getText());
+        //VALIDA SI EL CORREO ELECTRONICO CUMPLE CON EL REQUISITO NOMBRE@GMAIL.COM
+        validarCorreo(txtCorreo.getText());
+
+        int anio = Integer.parseInt(cbAño.getSelectedItem().toString().trim());
+        int dia = Integer.parseInt(cbDia.getSelectedItem().toString().trim());
+        int mes = Integer.parseInt(cbMes.getSelectedItem().toString().trim());
+        LocalDate ld = LocalDate.of(anio, mes, dia);
+        es.setFechaNacimiento(ld);
+
+        caulcularEdad();
+        String edad = String.valueOf(caulcularEdad());
+
+        txtEdad.setText(edad);
+        es.setPosicion(cbPosicion.getSelectedItem().toString());
+        es.setSubposicion(cbSubPosicion.getSelectedItem().toString());
+        es.setPeso(Double.valueOf(txtPeso.getText()));
+        es.setEstatura(Double.valueOf(txtAltura.getText()));
+        es.setProvincia(cbProvincia.getSelectedItem().toString());
+        es.setCiudad(cbCanton.getSelectedItem().toString());
+        es.setNacionalidad(cbNacionalidad.getSelectedItem().toString());
+        EstudianteControlador ec = new EstudianteControlador();
+        ec.crearEsudiante(es);
+
+    }//GEN-LAST:event_txtGuardarActionPerformed
+
+    public void validarCedula(String cedula) {
+        String validar = "\\d{10}";
+        if (cedula.matches(validar)) {
+            es.setCiEstudiante(cedula);
+            txtCedula.setForeground(null);
+        } else {
+            txtCedula.setForeground(Color.red);
+        }
+    }
+
+    public void validarNP(String nombre, String apellido) {
+
+        String ValidaNom = "^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+$";
+        if (nombre.matches(ValidaNom)) {
+            es.setNombres(nombre);
+            txtNombre.setForeground(null);
+        } else {
+
+            txtNombre.setForeground(Color.red);
+        }
+
+        if (apellido.matches(ValidaNom)) {
+            es.setApellidos(apellido);
+            txtApellido.setForeground(null);
+        } else {
+
+            txtApellido.setForeground(Color.red);
+        }
+    }
+
+    public void validarTelefono(String telefono) {
+        String validar = "09\\d{8}";
+
+        if (telefono.matches(validar)) {
+            es.setTelefono(telefono);
+            txtTelefono.setForeground(null);
+        }
+        txtTelefono.setForeground(Color.red);
+
+    }
+
+    public void validarCorreo(String correo) {
+        String validar = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
+        if (correo.matches(validar)) {
+            es.setCorreo(correo);
+            txtCorreo.setForeground(null);
+        } else {
+            txtCorreo.setForeground(Color.red);
+        }
+    }
+
+    public int caulcularEdad() {
+
+        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaNacimiento = es.getFechaNacimiento();
+
+        int edad = fechaActual.getYear() - fechaNacimiento.getYear();
+
+        if (fechaNacimiento.getMonthValue() > fechaActual.getMonthValue()
+                || (fechaNacimiento.getMonthValue() == fechaActual.getMonthValue()
+                && fechaNacimiento.getDayOfMonth() > fechaActual.getDayOfMonth())) {
+            edad--;
+        }
+
+        es.setEdad(edad);
+
+        return edad;
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbAño;
     private javax.swing.JComboBox<String> cbCanton;
     private javax.swing.JComboBox<String> cbDia;
     private javax.swing.JComboBox<String> cbMes;
+    private javax.swing.JComboBox<String> cbNacionalidad;
     private javax.swing.JComboBox<String> cbPosicion;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JComboBox<String> cbSubPosicion;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -450,6 +572,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEdad;
+    private javax.swing.JButton txtGuardar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPeso;
     private javax.swing.JTextField txtTelefono;

@@ -14,9 +14,6 @@ import javax.swing.JComboBox;
 public class Estudiante {
 
     private String ciEstudiante;
-    private int idCategoria;
-    private Entrenador idEntrenador;
-    private Representante ciRepresentante;
     private String nombres;
     private String apellidos;
     private LocalDate fechaNacimiento;
@@ -30,16 +27,12 @@ public class Estudiante {
     private String nacionalidad;
     private double peso;
     private double estatura;
-    private String estado;
 
     public Estudiante() {
     }
 
-    public Estudiante(String ciEstudiante, int idCategoria, Entrenador idEntrenador, Representante ciRepresentante, String nombres, String apellidos, LocalDate fechaNacimiento, String telefono, String provincia, String ciudad, String correo, int edad, String posicion, String subposicion, String nacionalidad, double peso, double estatura, String estado) {
+    public Estudiante(String ciEstudiante, String nombres, String apellidos, LocalDate fechaNacimiento, String telefono, String provincia, String ciudad, String correo, int edad, String posicion, String subposicion, String nacionalidad, double peso, double estatura) {
         this.ciEstudiante = ciEstudiante;
-        this.idCategoria = idCategoria;
-        this.idEntrenador = idEntrenador;
-        this.ciRepresentante = ciRepresentante;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
@@ -53,8 +46,9 @@ public class Estudiante {
         this.nacionalidad = nacionalidad;
         this.peso = peso;
         this.estatura = estatura;
-        this.estado = estado;
     }
+
+    
 
     
 
@@ -66,29 +60,6 @@ public class Estudiante {
         this.ciEstudiante = ciEstudiante;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public Entrenador getIdEntrenador() {
-        return idEntrenador;
-    }
-
-    public void setIdEntrenador(Entrenador idEntrenador) {
-        this.idEntrenador = idEntrenador;
-    }
-
-    public Representante getCiRepresentante() {
-        return ciRepresentante;
-    }
-
-    public void setCiRepresentante(Representante ciRepresentante) {
-        this.ciRepresentante = ciRepresentante;
-    }
 
     public String getNombres() {
         return nombres;
@@ -196,13 +167,6 @@ public class Estudiante {
         this.estatura = estatura;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     public static void provinciasEcuador(JComboBox cbProvincias) {
 
@@ -672,4 +636,5 @@ public class Estudiante {
         }
     }
 
+    
 }
