@@ -30,6 +30,8 @@ public class Menu extends javax.swing.JFrame {
         jblBienvenido = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        opCrearUs = new javax.swing.JMenuItem();
+        opMostrarUs = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +55,25 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(379, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Estudiante");
+
+        opCrearUs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opCrearUs.setText("Crear Usuario");
+        opCrearUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opCrearUsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opCrearUs);
+
+        opMostrarUs.setText("Mostrar Usuario");
+        opMostrarUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opMostrarUsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opMostrarUs);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -74,6 +94,14 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opCrearUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opCrearUsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opCrearUsActionPerformed
+
+    private void opMostrarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opMostrarUsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opMostrarUsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,5 +144,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jblBienvenido;
+    private javax.swing.JMenuItem opCrearUs;
+    private javax.swing.JMenuItem opMostrarUs;
     // End of variables declaration//GEN-END:variables
 }
