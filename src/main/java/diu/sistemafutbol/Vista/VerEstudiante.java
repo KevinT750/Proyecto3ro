@@ -10,6 +10,7 @@ import diu.sistemafutbol.Modelo.Estudiante;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -225,7 +226,21 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }
 }
 
-    
+
+    public void eliminarCliente(){
+         
+        int fila = tbDatosEs.getSelectedRow();
+        String valor = tbDatosEs.getValueAt(fila, 0).toString();
+        
+        try {
+            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '"+valor+"'");
+            eliminar.executeUpdate();
+            limpiarTabla();
+            cargarTabla();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e + " No se pudo eliminar el registro");
+        }
+    }
     
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         EstudianteControlador ec = new EstudianteControlador();
@@ -242,6 +257,11 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         actualizarDatos(); 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
