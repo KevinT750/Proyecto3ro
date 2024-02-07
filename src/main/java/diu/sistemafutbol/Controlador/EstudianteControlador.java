@@ -5,6 +5,7 @@
 package diu.sistemafutbol.Controlador;
 
 import diu.sistemafutbol.Modelo.Estudiante;
+import diu.sistemafutbol.Vista.VerEstudiante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -96,4 +97,64 @@ public class EstudianteControlador {
         return null;
 
     }
+
+    public ArrayList<Object[]> buscarPorNombre(String Nombre) {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "call bddescuelafutbol.BuscarPorNombre('" + Nombre + "');";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[14];
+                for (int i = 0; i < 14; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+
+    public ArrayList<Object[]> buscarPorCI(String cedula) {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "call bddescuelafutbol.BuscarPersona('" + cedula + "');";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[14];
+                for (int i = 0; i < 14; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+
+    
 }
