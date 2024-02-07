@@ -10,6 +10,7 @@ import diu.sistemafutbol.Modelo.Estudiante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     Connection conectado = (Connection) conectar.conectar();
     PreparedStatement ejecutar;
     ResultSet resultado;
+
     public VerEstudiante() {
         initComponents();
         setModelo();
@@ -78,6 +80,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtEliminar = new javax.swing.JButton();
+        txtActualizar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -158,6 +161,13 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
+        txtActualizar.setText("Actualizar");
+        txtActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtActualizarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -165,6 +175,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -188,7 +199,9 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtEliminar)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(295, 295, 295))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -197,19 +210,25 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel1))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(txtEliminar)))
-                .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(txtActualizar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -284,13 +303,17 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         eliminarCliente();
     }//GEN-LAST:event_txtEliminarActionPerformed
 
-    public void eliminarCliente(){
-         
+    private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
+        actualizarDatos();
+    }//GEN-LAST:event_txtActualizarActionPerformed
+
+    public void eliminarCliente() {
+
         int fila = tbDatosEs.getSelectedRow();
         String valor = tbDatosEs.getValueAt(fila, 0).toString();
-        
+
         try {
-            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '"+valor+"'");
+            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '" + valor + "'");
             eliminar.executeUpdate();
             limpiarTabla();
             cargarTabla();
@@ -298,6 +321,51 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e + " No se pudo eliminar el registro");
         }
     }
+
+    public void actualizarDatos() {
+        int fila = tbDatosEs.getSelectedRow();
+
+        if (fila < 0) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione el registro a modificar antes de presionar el botón");
+            return;
+        }
+
+        String ci = tbDatosEs.getValueAt(fila, 0).toString();
+        String nombre = tbDatosEs.getValueAt(fila, 1).toString();
+        String apellido = tbDatosEs.getValueAt(fila, 2).toString();
+        String fechaNa = tbDatosEs.getValueAt(fila, 3).toString();
+        String telefono = tbDatosEs.getValueAt(fila, 4).toString();
+        String provincia = tbDatosEs.getValueAt(fila, 5).toString();
+        String ciudad = tbDatosEs.getValueAt(fila, 6).toString();
+        String correo = tbDatosEs.getValueAt(fila, 7).toString();
+        String edad = tbDatosEs.getValueAt(fila, 8).toString();
+        String Posicion = tbDatosEs.getValueAt(fila, 9).toString();
+        String SubPosicion = tbDatosEs.getValueAt(fila, 10).toString();
+        String nacionalidad = tbDatosEs.getValueAt(fila, 11).toString();
+        String peso = tbDatosEs.getValueAt(fila, 12).toString();
+        String estatura = tbDatosEs.getValueAt(fila, 13).toString();
+
+        try {
+            String SQL = "UPDATE estudiante SET NOMBRES='" + nombre + "',"
+                    + " APELLIDOS='" + apellido + "', FECHA_NACIMIENTO='" + fechaNa + "',"
+                    + " TELEFONO='" + telefono + "', PROVINCIA='" + provincia + "',"
+                    + " CIUDAD='" + ciudad + "', CORREO='" + correo + "', EDAD='" + edad + "',"
+                    + " POSICION='" + Posicion + "', SUBPOSICION='" + SubPosicion
+                    + "', NACIONALIDAD='" + nacionalidad + "', PESO='" + peso + "', ESTATURA='" + estatura + "' WHERE CI_ESTUDIANTE='" + ci + "'";
+            PreparedStatement actu = conectado.prepareStatement(SQL);
+
+            int filasActualizadas = actu.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar los datos");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
+        }
+    }
+
     public void limpiarTabla() {
         modelo.setDataVector(null, new Object[]{"Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"});
     }
@@ -308,6 +376,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbDatosEs;
+    private javax.swing.JButton txtActualizar;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JButton txtEliminar;
     private javax.swing.JTextField txtNombre;
