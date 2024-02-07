@@ -37,15 +37,16 @@ public class EntrenadorControlador {
     public boolean inisiarSesion(String Usuario, String Contrasenia) {
         try {
             String SQL = "SELECT ID_ENTRENADOR, NOMBREENT, APELLIDOENT "
-                    + "FROM entrenador "
+                    + "FROM Entrenadores "
                     + "WHERE Usuario = '" + Usuario + "' AND Contrasenia = '" + Contrasenia + "';";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             ResultSet res = ejecutar.executeQuery();
 
             if (res.next()) {
+
                 System.out.println("Bienvenido " + Usuario);
-                
-                
+                JOptionPane.showMessageDialog(null, "Bienvenido " + Usuario);
+
                 return true;
             } else {
                 System.out.println("Usuario o Contraseña incorrecto");
