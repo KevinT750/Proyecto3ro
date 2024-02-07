@@ -47,20 +47,20 @@ public class Menu extends javax.swing.JFrame {
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
+            .addComponent(jblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1237, Short.MAX_VALUE)
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addContainerGap(638, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Estudiante");
 
         opCrearUs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        opCrearUs.setText("Crear Usuario");
+        opCrearUs.setText("Crear Estudiante");
         opCrearUs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opCrearUsActionPerformed(evt);
@@ -68,7 +68,8 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(opCrearUs);
 
-        opMostrarUs.setText("Mostrar Usuario");
+        opMostrarUs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opMostrarUs.setText("Ver Estudiantes");
         opMostrarUs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opMostrarUsActionPerformed(evt);
@@ -104,7 +105,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_opCrearUsActionPerformed
 
     private void opMostrarUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opMostrarUsActionPerformed
-        // TODO add your handling code here:
+        VerEstudiante ve = new VerEstudiante();
+        Escritorio.add(ve);
+        ve.show();
     }//GEN-LAST:event_opMostrarUsActionPerformed
 
     /**

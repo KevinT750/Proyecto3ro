@@ -501,7 +501,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
     }
 
     public void validarTelefono(String telefono) {
-        String validar = "09\\d{8}";
+        String validar = "^09\\d{8}$";
 
         if (telefono.matches(validar)) {
             es.setTelefono(telefono);

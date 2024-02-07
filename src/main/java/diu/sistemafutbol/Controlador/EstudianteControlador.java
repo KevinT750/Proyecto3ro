@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -63,5 +64,36 @@ public class EstudianteControlador {
         } catch (SQLException e) {
             System.out.println("COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);
         }
+    }
+
+    public ArrayList<Object[]> datosEstudiante() {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+        try {
+
+            String SQL = "call VerEstudiantes();";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            //int cont = 1;
+
+            while (res.next()) {
+
+                Object[] fila = new Object[14];
+                for (int i = 0; i < 14; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
     }
 }
