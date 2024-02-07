@@ -14,7 +14,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+C"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Crear Usuario"/>
+                <Property name="text" type="java.lang.String" value="Crear Estudiante"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opCrearUsActionPerformed"/>
@@ -22,7 +22,10 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="opMostrarUs">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar Usuario"/>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+V"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ver Estudiantes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opMostrarUsActionPerformed"/>
@@ -77,7 +80,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jblBienvenido" alignment="1" pref="732" max="32767" attributes="0"/>
+              <Component id="jblBienvenido" alignment="1" pref="1237" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -85,7 +88,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jblBienvenido" min="-2" pref="55" max="-2" attributes="0"/>
-                  <EmptySpace pref="379" max="32767" attributes="0"/>
+                  <EmptySpace pref="638" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

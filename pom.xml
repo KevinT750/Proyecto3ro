@@ -19,5 +19,5 @@
         <version>8.2.0</version>
     </dependency>
     </dependencies>
-    
+    <name>SistemaFutbol-B</name>
 </project>
