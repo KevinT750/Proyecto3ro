@@ -5,6 +5,7 @@
 package diu.sistemafutbol.Controlador;
 
 import diu.sistemafutbol.Modelo.Estudiante;
+import diu.sistemafutbol.Vista.VerEstudiante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,32 +98,8 @@ public class EstudianteControlador {
 
     }
     
-    
-    public void actualizarDatos(){
-        VerEstudiante estud = new  VerEstudiante();
-        int fila = tbDatosEs.getSelectedRows();
-       
-        int ci = Integer.parseInt(this.tbDatosEs.getValueAt(fila, 0).toString());
-        
-        String nombre =tbDatosEs.getValueAt(fila, 1).toString();
-        String apellido =tbDatosEs.getValueAt(fila, 2).toString();
-        String fechaNa =tbDatosEs.getValueAt(fila, 3).toString();
-        String telefono =tbDatosEs.getValueAt(fila, 4).toString();
-        String provincia =tbDatosEs.getValueAt(fila, 5).toString();
-        String ciudad =tbDatosEs.getValueAt(fila, 6).toString();
-        String correo =tbDatosEs.getValueAt(fila, 7).toString();
-        String edad =tbDatosEs.getValueAt(fila, 8).toString();
-        String nacionalidad =tbDatosEs.getValueAt(fila, 9).toString();
-        String peso =tbDatosEs.getValueAt(fila, 10).toString();
-        String estatura =tbDatosEs.getValueAt(fila, 11).toString();
-       
-        try {
-            
-        } catch (Exception e) {
-        }
-         
-        
-    }
+   
+   
     
     
 }
