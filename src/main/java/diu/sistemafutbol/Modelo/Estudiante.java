@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
  * @author kevin
  */
 public class Estudiante {
-
+    private int IdEstudiante;
     private String ciEstudiante;
     private String nombres;
     private String apellidos;
@@ -31,7 +31,8 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(String ciEstudiante, String nombres, String apellidos, LocalDate fechaNacimiento, String telefono, String provincia, String ciudad, String correo, int edad, String posicion, String subposicion, String nacionalidad, double peso, double estatura) {
+    public Estudiante(int IdEstudiante, String ciEstudiante, String nombres, String apellidos, LocalDate fechaNacimiento, String telefono, String provincia, String ciudad, String correo, int edad, String posicion, String subposicion, String nacionalidad, double peso, double estatura) {
+        this.IdEstudiante = IdEstudiante;
         this.ciEstudiante = ciEstudiante;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -48,9 +49,13 @@ public class Estudiante {
         this.estatura = estatura;
     }
 
-    
+    public int getIdEstudiante() {
+        return IdEstudiante;
+    }
 
-    
+    public void setIdEstudiante(int IdEstudiante) {
+        this.IdEstudiante = IdEstudiante;
+    }
 
     public String getCiEstudiante() {
         return ciEstudiante;
@@ -84,8 +89,6 @@ public class Estudiante {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
-
 
     public String getTelefono() {
         return telefono;

@@ -38,7 +38,7 @@ public class EstudianteControlador {
 
     public void crearEsudiante(Estudiante es) {
         try {
-            String SQL = "CALL InsertarEstudiante ('" + es.getCiEstudiante() + "','"
+            String SQL = "CALL AgregarEstudiante ('" + es.getCiEstudiante() + "','"
                     + es.getNombres() + "','"
                     + es.getApellidos() + "','"
                     + es.getFechaNacimiento() + "','"
@@ -101,7 +101,7 @@ public class EstudianteControlador {
 
     public ArrayList<Object[]> buscarPorNombre(String Nombre) {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
-
+RepresentanteControlador p = new RepresentanteControlador();
         try {
             String SQL = "call bddescuelafutbol.BuscarPorNombre('" + Nombre + "');";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);

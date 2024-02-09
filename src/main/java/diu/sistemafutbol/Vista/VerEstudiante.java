@@ -305,6 +305,8 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
 
     private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
         actualizarDatos();
+        limpiarTabla();
+        cargarTabla();
     }//GEN-LAST:event_txtActualizarActionPerformed
 
     public void eliminarCliente() {
@@ -325,11 +327,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     public void actualizarDatos() {
         int fila = tbDatosEs.getSelectedRow();
 
-        if (fila < 0) {
-            JOptionPane.showMessageDialog(rootPane, "Seleccione el registro a modificar antes de presionar el botón");
-            return;
-        }
-
         String ci = tbDatosEs.getValueAt(fila, 0).toString();
         String nombre = tbDatosEs.getValueAt(fila, 1).toString();
         String apellido = tbDatosEs.getValueAt(fila, 2).toString();
@@ -345,22 +342,42 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         String peso = tbDatosEs.getValueAt(fila, 12).toString();
         String estatura = tbDatosEs.getValueAt(fila, 13).toString();
 
+        if (fila < 0) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione el registro a modificar antes de presionar el botón");
+            return;
+        }
+
         try {
-            String SQL = "UPDATE estudiante SET NOMBRES='" + nombre + "',"
-                    + " APELLIDOS='" + apellido + "', FECHA_NACIMIENTO='" + fechaNa + "',"
-                    + " TELEFONO='" + telefono + "', PROVINCIA='" + provincia + "',"
-                    + " CIUDAD='" + ciudad + "', CORREO='" + correo + "', EDAD='" + edad + "',"
-                    + " POSICION='" + Posicion + "', SUBPOSICION='" + SubPosicion
-                    + "', NACIONALIDAD='" + nacionalidad + "', PESO='" + peso + "', ESTATURA='" + estatura + "' WHERE CI_ESTUDIANTE='" + ci + "'";
+
+            String SQL = "CALL ActualizarEstudiante(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement actu = conectado.prepareStatement(SQL);
+            actu.setString(1, ci);
+            actu.setString(2, nombre);
+            actu.setString(3, apellido);
+            actu.setString(4, fechaNa);
+            actu.setString(5, telefono);
+            actu.setString(6, provincia);
+            actu.setString(7, ciudad);
+            actu.setString(8, correo);
+            actu.setString(9, edad);
+            actu.setString(10, Posicion);
+            actu.setString(11, SubPosicion);
+            actu.setString(12, nacionalidad);
+            actu.setString(13, peso);
+            actu.setString(14, estatura);
 
             int filasActualizadas = actu.executeUpdate();
+            
 
             if (filasActualizadas > 0) {
                 JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo actualizar los datos");
             }
+
+            // Actualizar la tabla después de la actualización
+            limpiarTabla();
+            cargarTabla();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
         }

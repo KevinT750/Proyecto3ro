@@ -9,6 +9,7 @@ package diu.sistemafutbol.Modelo;
  * @author kevin
  */
 public class Representante {
+    private int IdRepresentante;
     private String ciRepresentante;
     private String nombreRep;
     private String apellidoRep;
@@ -17,11 +18,20 @@ public class Representante {
     public Representante() {
     }
 
-    public Representante(String ciRepresentante, String nombreRep, String apellidoRep, String telefono) {
+    public Representante(int IdRepresentante, String ciRepresentante, String nombreRep, String apellidoRep, String telefono) {
+        this.IdRepresentante = IdRepresentante;
         this.ciRepresentante = ciRepresentante;
         this.nombreRep = nombreRep;
         this.apellidoRep = apellidoRep;
         this.telefono = telefono;
+    }
+
+    public int getIdRepresentante() {
+        return IdRepresentante;
+    }
+
+    public void setIdRepresentante(int IdRepresentante) {
+        this.IdRepresentante = IdRepresentante;
     }
 
     public String getCiRepresentante() {
