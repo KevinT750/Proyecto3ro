@@ -114,13 +114,8 @@ public class Login extends javax.swing.JFrame {
         Entrenador e = new Entrenador();
         e.setUsuario(txtUsuario.getText());
         e.setContrasena(txtContrasenia.getText());
-        boolean ver = ec.inisiarSesion(e.getUsuario(), e.getContrasena());
-        if (ver == true) {
-            Menu m = new Menu();
-            m.setVisible(ver);
-            this.dispose();
-
-        }
+        
+        ec.inisiarSesion(e);
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 

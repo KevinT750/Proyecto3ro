@@ -79,8 +79,8 @@ public class EstudianteControlador {
 
             while (res.next()) {
 
-                Object[] fila = new Object[14];
-                for (int i = 0; i < 14; i++) {
+                Object[] fila = new Object[15];
+                for (int i = 0; i < 15; i++) {
                     fila[i] = res.getObject(i + 1);
 
                 }
@@ -101,7 +101,7 @@ public class EstudianteControlador {
 
     public ArrayList<Object[]> buscarPorNombre(String Nombre) {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
-RepresentanteControlador p = new RepresentanteControlador();
+        RepresentanteControlador p = new RepresentanteControlador();
         try {
             String SQL = "call bddescuelafutbol.BuscarPorNombre('" + Nombre + "');";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
@@ -157,5 +157,4 @@ RepresentanteControlador p = new RepresentanteControlador();
 
     }
 
-    
 }

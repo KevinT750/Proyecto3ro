@@ -34,7 +34,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         opCrearUs = new javax.swing.JMenuItem();
         opMostrarUs = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        Entrenador = new javax.swing.JMenu();
+        opEntrenador = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
@@ -79,8 +80,18 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        Entrenador.setText("Entrenador");
+
+        opEntrenador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        opEntrenador.setText("Crear Entrenador");
+        opEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opEntrenadorActionPerformed(evt);
+            }
+        });
+        Entrenador.add(opEntrenador);
+
+        jMenuBar1.add(Entrenador);
 
         setJMenuBar(jMenuBar1);
 
@@ -109,6 +120,12 @@ public class Menu extends javax.swing.JFrame {
         Escritorio.add(ve);
         ve.show();
     }//GEN-LAST:event_opMostrarUsActionPerformed
+
+    private void opEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opEntrenadorActionPerformed
+        CrearEntrenador ce = new CrearEntrenador();
+        Escritorio.add(ce);
+        ce.show();
+    }//GEN-LAST:event_opEntrenadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,12 +163,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Entrenador;
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jblBienvenido;
     private javax.swing.JMenuItem opCrearUs;
+    private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opMostrarUs;
     // End of variables declaration//GEN-END:variables
 }
