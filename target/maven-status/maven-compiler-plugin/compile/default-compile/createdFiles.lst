@@ -4,6 +4,7 @@ diu\Vista\CrearEstudiante$9.class
 diu\sistemafutbol\Controlador\RepresentanteControlador.class
 diu\Vista\CrearEstudiante$10.class
 diu\sistemafutbol\Vista\Menu$3.class
+diu\sistemafutbol\Vista\MostarEntrenador$2.class
 diu\Vista\CrearEstudiante.class
 diu\Vista\CrearEstudiante$2.class
 diu\sistemafutbol\Vista\MostrarUsuario$4.class
@@ -24,8 +25,10 @@ diu\Vista\CrearEstudiante$8.class
 diu\sistemafutbol\Vista\VerEstudiante$5.class
 diu\sistemafutbol\Vista\Login.class
 diu\sistemafutbol\Vista\Menu$4.class
+diu\sistemafutbol\Vista\Menu$5.class
 diu\sistemafutbol\Vista\MostrarUsuario$5.class
 diu\sistemafutbol\Controlador\EstudianteControlador.class
+diu\sistemafutbol\Vista\MostarEntrenador.class
 diu\sistemafutbol\Vista\Menu$2.class
 diu\sistemafutbol\Vista\Menu.class
 diu\sistemafutbol\Vista\VerEstudiante$8.class
@@ -44,4 +47,5 @@ diu\sistemafutbol\Vista\MostrarUsuario$3.class
 diu\sistemafutbol\Vista\VerEstudiante$7.class
 diu\sistemafutbol\Controlador\EntrenadorControlador.class
 diu\Vista\CrearEstudiante$6.class
+diu\sistemafutbol\Vista\MostarEntrenador$1.class
 diu\sistemafutbol\Controlador\Controlador.class

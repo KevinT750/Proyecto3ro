@@ -31,6 +31,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        opMostrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Usuario");
@@ -58,7 +59,17 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Pagos");
+        jMenu2.setText("Entrenador");
+
+        opMostrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opMostrar.setText("Mostrar Entrenador");
+        opMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opMostrarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(opMostrar);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -84,6 +95,12 @@ public class MenuUsuario extends javax.swing.JFrame {
         Escritorio.add(mu);
         mu.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void opMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opMostrarActionPerformed
+        MostarEntrenadorUsuario meu = new MostarEntrenadorUsuario();
+        Escritorio.add(meu);
+        meu.show();
+    }//GEN-LAST:event_opMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,5 +143,6 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem opMostrar;
     // End of variables declaration//GEN-END:variables
 }

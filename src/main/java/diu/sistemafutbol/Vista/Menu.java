@@ -36,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
         opMostrarUs = new javax.swing.JMenuItem();
         Entrenador = new javax.swing.JMenu();
         opEntrenador = new javax.swing.JMenuItem();
+        opEntrnador = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
@@ -91,6 +92,15 @@ public class Menu extends javax.swing.JFrame {
         });
         Entrenador.add(opEntrenador);
 
+        opEntrnador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        opEntrnador.setText("Mostrar Entrenador");
+        opEntrnador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opEntrnadorActionPerformed(evt);
+            }
+        });
+        Entrenador.add(opEntrnador);
+
         jMenuBar1.add(Entrenador);
 
         setJMenuBar(jMenuBar1);
@@ -126,6 +136,12 @@ public class Menu extends javax.swing.JFrame {
         Escritorio.add(ce);
         ce.show();
     }//GEN-LAST:event_opEntrenadorActionPerformed
+
+    private void opEntrnadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opEntrnadorActionPerformed
+        MostarEntrenador me = new MostarEntrenador();
+        Escritorio.add(me);
+        me.show();
+    }//GEN-LAST:event_opEntrnadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +186,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jblBienvenido;
     private javax.swing.JMenuItem opCrearUs;
     private javax.swing.JMenuItem opEntrenador;
+    private javax.swing.JMenuItem opEntrnador;
     private javax.swing.JMenuItem opMostrarUs;
     // End of variables declaration//GEN-END:variables
 }

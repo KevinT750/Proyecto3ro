@@ -12,6 +12,8 @@ import diu.sistemafutbol.Vista.MenuUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -101,5 +103,115 @@ public class EntrenadorControlador {
             }
         } catch (Exception e) {
         }
+    }
+
+    public ArrayList<Object[]> datosEntrenador() {
+        ArrayList<Object[]> listaEntrenador = new ArrayList<>();
+        try {
+            String SQL = "CALL MostrarEntrenadores()";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+
+            while (res.next()) {
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
+                    fila[i] = res.getObject(i + 1);
+                }
+                listaEntrenador.add(fila);
+
+            }
+            res.close();
+            return listaEntrenador;
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+        return null;
+
+    }
+
+    public ArrayList<Object[]> buscarRol(String c) {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "call MostrarEntrenadoresPorRol('" + c + "');";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+    public ArrayList<Object[]> buscarNombre(String nombre) {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "call MostrarEntrenadoresPorNombre('" + nombre + "');";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+    public ArrayList<Object[]> buscarCedula(String cedula) {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "call MostrarEntrenadoresPorCedula('" + cedula + "');";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
     }
 }
