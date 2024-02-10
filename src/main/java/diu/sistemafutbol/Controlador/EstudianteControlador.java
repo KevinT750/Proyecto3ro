@@ -38,30 +38,35 @@ public class EstudianteControlador {
 
     public void crearEsudiante(Estudiante es) {
         try {
-            String SQL = "CALL AgregarEstudiante ('" + es.getCiEstudiante() + "','"
-                    + es.getNombres() + "','"
-                    + es.getApellidos() + "','"
-                    + es.getFechaNacimiento() + "','"
-                    + es.getTelefono() + "','"
-                    + es.getProvincia() + "','"
-                    + es.getCiudad() + "','"
-                    + es.getCorreo() + "','"
-                    + es.getEdad() + "','"
-                    + es.getPosicion() + "','"
-                    + es.getSubposicion() + "','"
-                    + es.getNacionalidad() + "','"
-                    + es.getPeso() + "','"
-                    + es.getEstatura() + "');";
-            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            if (es.getEdad() <= 18) {
+                String SQL = "CALL AgregarEstudiante ('" + es.getCiEstudiante() + "','"
+                        + es.getNombres() + "','"
+                        + es.getApellidos() + "','"
+                        + es.getFechaNacimiento() + "','"
+                        + es.getTelefono() + "','"
+                        + es.getProvincia() + "','"
+                        + es.getCiudad() + "','"
+                        + es.getCorreo() + "','"
+                        + es.getEdad() + "','"
+                        + es.getPosicion() + "','"
+                        + es.getSubposicion() + "','"
+                        + es.getNacionalidad() + "','"
+                        + es.getPeso() + "','"
+                        + es.getEstatura() + "');";
+                ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
 
-            int res = ejecutar.executeUpdate();
-            if (res > 0) {
-                System.out.println("Estudiante Creado con Exito");
-                ejecutar.close();
+                int res = ejecutar.executeUpdate();
+                if (res > 0) {
+                    System.out.println("Estudiante Creado con Exito");
+                    ejecutar.close();
 
+                } else {
+
+                    System.out.println("Revise la informacion ingresada");
+                }
             } else {
-
-                System.out.println("Revise la informacion ingresada");
+            
+            JOptionPane.showMessageDialog(null, "La edad Supera los 18 Años, Ingrese la edad Nuevamente");
             }
         } catch (SQLException e) {
             System.out.println("COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);

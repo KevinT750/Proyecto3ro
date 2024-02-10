@@ -12,6 +12,7 @@ import diu.sistemafutbol.Modelo.Representante;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -537,13 +538,12 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
 
     private void txtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuardarActionPerformed
 
-        
         validarCedulaR(txtCedulaR.getText());
-        
+
         validarNPR(txtNombreR.getText(), txtApellidoR.getText());
-        
+
         validarTelefonoR(txtNombreR.getText());
-        
+
         RepresentanteControlador rp = new RepresentanteControlador();
         rp.ingresarRepresentante(r);
         // VALIDAR SI LA CEDULA TIENE 10 DIGITOS Y SI SOLO SON NUMEROS ENTEROS
@@ -564,9 +564,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         es.setFechaNacimiento(ld);
 
         caulcularEdad();
-        String edad = String.valueOf(caulcularEdad());
 
-        txtEdad.setText(edad);
         es.setPosicion(cbPosicion.getSelectedItem().toString());
         es.setSubposicion(cbSubPosicion.getSelectedItem().toString());
         es.setPeso(Double.valueOf(txtPeso.getText()));
@@ -619,7 +617,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
             txtCedula.setForeground(Color.red);
         }
     }
-    
+
     public void validarCedulaR(String cedula) {
         String validar = "\\d{10}";
         if (cedula.matches(validar)) {
@@ -649,7 +647,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
             txtApellido.setForeground(Color.red);
         }
     }
-    
+
     public void validarNPR(String nombre, String apellido) {
 
         String ValidaNom = "^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+$";
@@ -680,7 +678,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         txtTelefono.setForeground(Color.red);
 
     }
-    
+
     public void validarTelefonoR(String telefono) {
         String validar = "^09\\d+$";
 
@@ -702,7 +700,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         }
     }
 
-    public int caulcularEdad() {
+    public void caulcularEdad() {
 
         LocalDate fechaActual = LocalDate.now();
         LocalDate fechaNacimiento = es.getFechaNacimiento();
@@ -716,8 +714,8 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         }
 
         es.setEdad(edad);
-
-        return edad;
+        String edades = String.valueOf(edad);
+        txtEdad.setText(edades);
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
