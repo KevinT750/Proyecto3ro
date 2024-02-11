@@ -6,7 +6,7 @@ package diu.sistemafutbol.Vista;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class Main {
 

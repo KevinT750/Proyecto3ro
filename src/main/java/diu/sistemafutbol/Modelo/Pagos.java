@@ -4,29 +4,32 @@
  */
 package diu.sistemafutbol.Modelo;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class Pagos {
     private int idPago;
     private Estudiante ciEstudiante;
-    private Date fechaPago;
+    private LocalDate fechaPago;
     private String estado;
     private double monto;
 
     public Pagos() {
     }
 
-    public Pagos(int idPago, Estudiante ciEstudiante, Date fechaPago, String estado, double monto) {
+    public Pagos(int idPago, Estudiante ciEstudiante, LocalDate fechaPago, String estado, double monto) {
         this.idPago = idPago;
         this.ciEstudiante = ciEstudiante;
         this.fechaPago = fechaPago;
         this.estado = estado;
         this.monto = monto;
     }
+
+    
 
     
 
@@ -46,11 +49,11 @@ public class Pagos {
         this.ciEstudiante = ciEstudiante;
     }
 
-    public Date getFechaPago() {
+    public LocalDate getFechaPago() {
         return fechaPago;
     }
 
-    public void setFechaPago(Date fechaPago) {
+    public void setFechaPago(LocalDate fechaPago) {
         this.fechaPago = fechaPago;
     }
 

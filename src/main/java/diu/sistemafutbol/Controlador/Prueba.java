@@ -6,7 +6,7 @@ package diu.sistemafutbol.Controlador;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class Prueba {
     public static void main(String[] args) {

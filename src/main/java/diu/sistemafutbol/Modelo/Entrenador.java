@@ -6,26 +6,46 @@ package diu.sistemafutbol.Modelo;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class Entrenador {
     private int idEntrenador;
+    private String CedulaE;
     private String nombreEnt;
     private String apellidoEnt;
     private String telefono;
     private String usuario;
     private String contrasena;
+    private String rol;
 
-    public Entrenador(int idEntrenador, String nombreEnt, String apellidoEnt, String telefono, String usuario, String contrasena) {
+    public Entrenador(int idEntrenador, String CedulaE, String nombreEnt, String apellidoEnt, String telefono, String usuario, String contrasena, String rol) {
         this.idEntrenador = idEntrenador;
+        this.CedulaE = CedulaE;
         this.nombreEnt = nombreEnt;
         this.apellidoEnt = apellidoEnt;
         this.telefono = telefono;
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.rol = rol;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public Entrenador() {
+    }
+
+    public String getCedulaE() {
+        return CedulaE;
+    }
+
+    public void setCedulaE(String CedulaE) {
+        this.CedulaE = CedulaE;
     }
 
     public int getIdEntrenador() {

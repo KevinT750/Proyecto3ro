@@ -2,22 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package diu.sistemafutbol.Vista;
+package DIU.Vista;
 
 import com.mysql.cj.protocol.a.LocalDateTimeValueEncoder;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
+import diu.sistemafutbol.Controlador.RepresentanteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
+import diu.sistemafutbol.Modelo.Representante;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class CrearEstudiante extends javax.swing.JInternalFrame {
 
     Estudiante es = new Estudiante();
+    Representante r = new Representante();
 
     public CrearEstudiante() {
         initComponents();
@@ -36,6 +40,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jblNombre = new javax.swing.JLabel();
@@ -72,6 +77,18 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jblCedula6 = new javax.swing.JLabel();
         txtAltura = new javax.swing.JTextField();
         txtGuardar = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        jblCedula7 = new javax.swing.JLabel();
+        txtCedulaR = new javax.swing.JTextField();
+        jblCedula8 = new javax.swing.JLabel();
+        txtNombreR = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jblCedula9 = new javax.swing.JLabel();
+        txtApellidoR = new javax.swing.JTextField();
+        jblCedula10 = new javax.swing.JLabel();
+        txtTelefonoR = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -95,6 +112,8 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(924, 700));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,7 +173,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel2.setText("Nacionalidad:");
 
-        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2000", "2001", "2002 ", "2003 ", "2004 ", "2005 ", "2006", "2007", "2008 ", "2009,", "2010 ", "2011 ", "2012 ", "2013 ", "2014 ", "2015 ", "2016 ", "2017 ", "2018 ", "2019", "2020 ", "2021 ", "2022", "2023", "2024" }));
+        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2000", "2001", "2002 ", "2003 ", "2004 ", "2005 ", "2006", "2007", "2008 ", "2009", "2010 ", "2011 ", "2012 ", "2013 ", "2014 ", "2015 ", "2016 ", "2017 ", "2018 ", "2019", "2020 ", "2021 ", "2022", "2023", "2024" }));
         cbAño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAñoActionPerformed(evt);
@@ -203,13 +222,45 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jblCedula6.setText("Altura:");
 
         txtAltura.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        txtAltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlturaActionPerformed(evt);
+            }
+        });
 
+        txtGuardar.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         txtGuardar.setText("Guardar");
         txtGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGuardarActionPerformed(evt);
             }
         });
+
+        jblCedula7.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jblCedula7.setText("Nro Cedula:");
+
+        txtCedulaR.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        jblCedula8.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jblCedula8.setText("Nombre:");
+
+        txtNombreR.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tw Cen MT", 3, 36)); // NOI18N
+        jLabel8.setText("REPRESENTANTE");
+
+        jLabel9.setFont(new java.awt.Font("Tw Cen MT", 3, 36)); // NOI18N
+        jLabel9.setText("USUARIO");
+
+        jblCedula9.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jblCedula9.setText("Apellido:");
+
+        txtApellidoR.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
+        jblCedula10.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jblCedula10.setText("Telefono:");
+
+        txtTelefonoR.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -246,6 +297,18 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jblCedula6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtAltura, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(filler1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jblCedula7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtCedulaR, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jblCedula8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtNombreR, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jblCedula9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtApellidoR, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jblCedula10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txtTelefonoR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -253,64 +316,53 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(106, 106, 106))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jblCedula5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cbPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jblCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jblCedula2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(cbNacionalidad, 0, 253, Short.MAX_VALUE)
                                         .addComponent(cbProvincia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jblCedula5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(54, 54, 54)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jblNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(cbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jDesktopPane1Layout.createSequentialGroup()
                             .addComponent(jblNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(16, 16, 16))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
                             .addComponent(jblCedula4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -324,25 +376,70 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
                                 .addComponent(cbSubPosicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtEdad))))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jblCedula6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jblNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jblCedula6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jblNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(cbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(txtGuardar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jblCedula9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtApellidoR, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(jblCedula10, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTelefonoR, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jblCedula7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCedulaR, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(jblCedula8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(392, 392, 392)
+                        .addComponent(txtGuardar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGap(42, 42, 42)
+                    .addComponent(jLabel9)
+                    .addContainerGap(748, Short.MAX_VALUE)))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(91, 91, 91)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,55 +488,64 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
                     .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jblCedula6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jblCedula7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCedulaR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jblCedula8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jblCedula9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jblCedula10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefonoR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(txtGuardar)
-                .addGap(35, 35, 35))
+                .addGap(126, 126, 126))
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGap(67, 67, 67)
+                    .addComponent(jLabel9)
+                    .addContainerGap(876, Short.MAX_VALUE)))
         );
+
+        jScrollPane1.setViewportView(jDesktopPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 887, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCantonActionPerformed
-
-    }//GEN-LAST:event_cbCantonActionPerformed
-
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
 
     }//GEN-LAST:event_formInternalFrameActivated
 
-    private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
-        Estudiante.cantonesPorProvincia(cbProvincia, cbCanton);
-    }//GEN-LAST:event_cbProvinciaActionPerformed
-
-    private void cbNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNacionalidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbNacionalidadActionPerformed
-
-    private void cbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMesActionPerformed
-        Estudiante.dia(cbMes, cbDia);
-    }//GEN-LAST:event_cbMesActionPerformed
-
-    private void cbPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPosicionActionPerformed
-        Estudiante.subposicion(cbPosicion, cbSubPosicion);
-    }//GEN-LAST:event_cbPosicionActionPerformed
-
-    private void cbSubPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSubPosicionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbSubPosicionActionPerformed
-
     private void txtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuardarActionPerformed
 
+        validarCedulaR(txtCedulaR.getText());
+
+        validarNPR(txtNombreR.getText(), txtApellidoR.getText());
+
+        validarTelefonoR(txtNombreR.getText());
+
+        RepresentanteControlador rp = new RepresentanteControlador();
+        rp.ingresarRepresentante(r);
         // VALIDAR SI LA CEDULA TIENE 10 DIGITOS Y SI SOLO SON NUMEROS ENTEROS
         validarCedula(txtCedula.getText());
 
@@ -458,9 +564,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         es.setFechaNacimiento(ld);
 
         caulcularEdad();
-        String edad = String.valueOf(caulcularEdad());
 
-        txtEdad.setText(edad);
         es.setPosicion(cbPosicion.getSelectedItem().toString());
         es.setSubposicion(cbSubPosicion.getSelectedItem().toString());
         es.setPeso(Double.valueOf(txtPeso.getText()));
@@ -470,13 +574,39 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         es.setNacionalidad(cbNacionalidad.getSelectedItem().toString());
         EstudianteControlador ec = new EstudianteControlador();
         ec.crearEsudiante(es);
-
     }//GEN-LAST:event_txtGuardarActionPerformed
 
-   
+    private void cbSubPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSubPosicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSubPosicionActionPerformed
+
+    private void cbPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPosicionActionPerformed
+        Estudiante.subposicion(cbPosicion, cbSubPosicion);
+    }//GEN-LAST:event_cbPosicionActionPerformed
+
+    private void cbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMesActionPerformed
+        Estudiante.dia(cbMes, cbDia);
+    }//GEN-LAST:event_cbMesActionPerformed
+
     private void cbAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAñoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbAñoActionPerformed
+
+    private void cbNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNacionalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbNacionalidadActionPerformed
+
+    private void cbCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCantonActionPerformed
+
+    }//GEN-LAST:event_cbCantonActionPerformed
+
+    private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
+        Estudiante.cantonesPorProvincia(cbProvincia, cbCanton);
+    }//GEN-LAST:event_cbProvinciaActionPerformed
+
+    private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlturaActionPerformed
 
     public void validarCedula(String cedula) {
         String validar = "\\d{10}";
@@ -485,6 +615,16 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
             txtCedula.setForeground(null);
         } else {
             txtCedula.setForeground(Color.red);
+        }
+    }
+
+    public void validarCedulaR(String cedula) {
+        String validar = "\\d{10}";
+        if (cedula.matches(validar)) {
+            r.setCiRepresentante((cedula));
+            txtCedulaR.setForeground(null);
+        } else {
+            txtCedulaR.setForeground(Color.red);
         }
     }
 
@@ -508,8 +648,39 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         }
     }
 
+    public void validarNPR(String nombre, String apellido) {
+
+        String ValidaNom = "^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+$";
+        if (nombre.matches(ValidaNom)) {
+            r.setNombreRep((nombre));
+            txtNombreR.setForeground(null);
+        } else {
+
+            txtNombreR.setForeground(Color.red);
+        }
+
+        if (apellido.matches(ValidaNom)) {
+            r.setApellidoRep((apellido));
+            txtApellidoR.setForeground(null);
+        } else {
+
+            txtApellidoR.setForeground(Color.red);
+        }
+    }
+
     public void validarTelefono(String telefono) {
-        String validar = "^09\\d{8}$";
+        String validar = "^09\\d+$";
+
+        if (telefono.matches(validar)) {
+            es.setTelefono(telefono);
+            txtTelefono.setForeground(null);
+        }
+        txtTelefono.setForeground(Color.red);
+
+    }
+
+    public void validarTelefonoR(String telefono) {
+        String validar = "^09\\d+$";
 
         if (telefono.matches(validar)) {
             es.setTelefono(telefono);
@@ -529,7 +700,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         }
     }
 
-    public int caulcularEdad() {
+    public void caulcularEdad() {
 
         LocalDate fechaActual = LocalDate.now();
         LocalDate fechaNacimiento = es.getFechaNacimiento();
@@ -543,8 +714,8 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         }
 
         es.setEdad(edad);
-
-        return edad;
+        String edades = String.valueOf(edad);
+        txtEdad.setText(edades);
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -556,6 +727,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbPosicion;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JComboBox<String> cbSubPosicion;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -564,25 +736,37 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jblCedula;
     private javax.swing.JLabel jblCedula1;
+    private javax.swing.JLabel jblCedula10;
     private javax.swing.JLabel jblCedula2;
     private javax.swing.JLabel jblCedula3;
     private javax.swing.JLabel jblCedula4;
     private javax.swing.JLabel jblCedula5;
     private javax.swing.JLabel jblCedula6;
+    private javax.swing.JLabel jblCedula7;
+    private javax.swing.JLabel jblCedula8;
+    private javax.swing.JLabel jblCedula9;
     private javax.swing.JLabel jblNombre;
     private javax.swing.JLabel jblNombre1;
     private javax.swing.JLabel jblNombre2;
     private javax.swing.JLabel jblNombre3;
     private javax.swing.JTextField txtAltura;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtApellidoR;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedulaR;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JButton txtGuardar;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreR;
     private javax.swing.JTextField txtPeso;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtTelefonoR;
     // End of variables declaration//GEN-END:variables
 }

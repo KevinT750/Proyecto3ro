@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class Controlador {
     java.sql.Connection conexion;

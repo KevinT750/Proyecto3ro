@@ -4,13 +4,12 @@
  */
 package diu.sistemafutbol.Vista;
 
-import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import diu.sistemafutbol.Controlador.Controlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
-import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,59 +18,71 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kevin
+ * @author Belial
  */
 public class VerEstudiante extends javax.swing.JInternalFrame {
 
     ArrayList<Estudiante> ListaPersonaModelo = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
+
+    Controlador conectar = new Controlador();
+    Connection conectado = (Connection) conectar.conectar();
+    PreparedStatement ejecutar;
+    ResultSet resultado;
+
     public VerEstudiante() {
         initComponents();
         setModelo();
     }
 
     public void setModelo() {
-        String[] cabecera = {"Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento",  "Telefono", "Provincia", "Canton", "Correo" ,"Edad",  "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"};
+        String[] cabecera = {"Nro", "Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"};
         modelo.setColumnIdentifiers(cabecera);
         tbDatosEs.setModel(modelo);
     }
-    
-    private void setDatos() {
-        
-        Object[] filas = new Object[modelo.getColumnCount()];
-        
-        for (Estudiante datos : ListaPersonaModelo) {
-            
-            filas[0] = datos.getCiEstudiante();
-            filas[1] = datos.getNombres();
-            filas[2] = datos.getApellidos();
-            filas[3] = datos.getFechaNacimiento();
-            filas[4] = datos.getTelefono(); 
-            filas[5] = datos.getProvincia();
-            filas[6] = datos.getCiudad();
-            filas[7] = datos.getCorreo();
-            filas[8] = datos.getEdad(); 
-            filas[9] = datos.getPosicion();
-            filas[10] = datos.getSubposicion();
-            filas[11] = datos.getNacionalidad();
-            filas[12] = datos.getPeso();
-            filas[13] = datos.getEstatura();
-            
-            modelo.addRow(filas);
 
-            
+    private void setDatos() {
+
+        Object[] filas = new Object[modelo.getColumnCount()];
+        int contador = 1;
+        for (Estudiante datos : ListaPersonaModelo) {
+
+            filas[0] = contador;
+            filas[1] = datos.getCiEstudiante();
+            filas[2] = datos.getNombres();
+            filas[3] = datos.getApellidos();
+            filas[4] = datos.getFechaNacimiento();
+            filas[5] = datos.getTelefono();
+            filas[6] = datos.getProvincia();
+            filas[7] = datos.getCiudad();
+            filas[8] = datos.getCorreo();
+            filas[9] = datos.getEdad();
+            filas[10] = datos.getPosicion();
+            filas[11] = datos.getSubposicion();
+            filas[12] = datos.getNacionalidad();
+            filas[13] = datos.getPeso();
+            filas[14] = datos.getEstatura();
+
+            modelo.addRow(filas);
+            contador++;
         }
         tbDatosEs.setModel(modelo);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        Escritorio = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDatosEs = new javax.swing.JTable();
-        btnActualizar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtEliminar = new javax.swing.JButton();
+        txtActualizar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -95,6 +106,17 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
+        Escritorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EscritorioMouseClicked(evt);
+            }
+        });
 
         tbDatosEs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,85 +129,216 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbDatosEs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDatosEsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbDatosEs);
 
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jLabel1.setText("Buscar Por:");
+
+        jLabel2.setText("Cedula:");
+
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                txtCedulaActionPerformed(evt);
+            }
+        });
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
             }
         });
 
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel3.setText("Nombre:");
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtEliminar.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        txtEliminar.setText("Eliminar");
+        txtEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEliminarActionPerformed(evt);
+            }
+        });
+
+        txtActualizar.setText("Actualizar");
+        txtActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtActualizarActionPerformed(evt);
+            }
+        });
+
+        Escritorio.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(295, 295, 295))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(461, Short.MAX_VALUE))
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel1)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(txtActualizar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(Escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(Escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-//    public void actualizarDatos(){
-//        int fila = tbDatosEs.getSelectedRows();
-//       
-//        int ci = Integer.parseInt(this.tbDatosEs.getValueAt(fila, 0).toString());
-//        
-//        String nombre =tbDatosEs.getValueAt(fila, 1).toString();
-//        String apellido =tbDatosEs.getValueAt(fila, 2).toString();
-//        String fechaNa =tbDatosEs.getValueAt(fila, 3).toString();
-//        String telefono =tbDatosEs.getValueAt(fila, 4).toString();
-//        String provincia =tbDatosEs.getValueAt(fila, 5).toString();
-//        String ciudad =tbDatosEs.getValueAt(fila, 6).toString();
-//        String correo =tbDatosEs.getValueAt(fila, 7).toString();
-//        String edad =tbDatosEs.getValueAt(fila, 8).toString();
-//        String nacionalidad =tbDatosEs.getValueAt(fila, 9).toString();
-//        String peso =tbDatosEs.getValueAt(fila, 10).toString();
-//        String estatura =tbDatosEs.getValueAt(fila, 11).toString();
-//       
-//        try {
-//            
-//        } catch (Exception e) {
-//        }
-//         
-//        
-//    }
-    
-    
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        this.cargarTabla();
+    }//GEN-LAST:event_formInternalFrameActivated
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+
+        EstudianteControlador ec = new EstudianteControlador();
+        ArrayList<Object[]> lista = ec.buscarPorNombre(txtNombre.getText());
+        this.limpiarTabla();
+        for (Object[] Filas : lista) {
+            modelo.addRow(Filas);
+
+        }
+        tbDatosEs.setModel(modelo);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    public void cargarTabla() {
+
+        EstudianteControlador ec = new EstudianteControlador();
+        ArrayList<Object[]> lista = ec.datosEstudiante();
+        for (Object[] Filas : lista) {
+            modelo.addRow(Filas);
+
+        }
+        tbDatosEs.setModel(modelo);
+    }
+    private void EscritorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EscritorioMouseClicked
+        this.limpiarTabla();
+        cargarTabla();
+
+
+    }//GEN-LAST:event_EscritorioMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+
+    }//GEN-LAST:event_formMouseClicked
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        EstudianteControlador ec = new EstudianteControlador();
+        ArrayList<Object[]> lista = ec.buscarPorCI(txtCedula.getText());
+        this.limpiarTabla();
+        for (Object[] Filas : lista) {
+            modelo.addRow(Filas);
+
+        }
+        tbDatosEs.setModel(modelo);
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
+
+    private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
+        eliminarCliente();
+    }//GEN-LAST:event_txtEliminarActionPerformed
+
+    private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
+        actualizarDatos();
+        limpiarTabla();
+        cargarTabla();
+    }//GEN-LAST:event_txtActualizarActionPerformed
+
+    private void tbDatosEsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosEsMouseClicked
+
+
+    }//GEN-LAST:event_tbDatosEsMouseClicked
+
+    public void eliminarCliente() {
+
+        int fila = tbDatosEs.getSelectedRow();
+        String valor = tbDatosEs.getValueAt(fila, 0).toString();
+
+        try {
+            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '" + valor + "'");
+            eliminar.executeUpdate();
+            limpiarTabla();
+            cargarTabla();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e + " No se pudo eliminar el registro");
+        }
+    }
+
     public void actualizarDatos() {
-    int fila = tbDatosEs.getSelectedRow();
-    if (fila != -1) {
+        int fila = tbDatosEs.getSelectedRow();
+
         String ci = tbDatosEs.getValueAt(fila, 0).toString();
         String nombre = tbDatosEs.getValueAt(fila, 1).toString();
         String apellido = tbDatosEs.getValueAt(fila, 2).toString();
@@ -195,78 +348,65 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         String ciudad = tbDatosEs.getValueAt(fila, 6).toString();
         String correo = tbDatosEs.getValueAt(fila, 7).toString();
         String edad = tbDatosEs.getValueAt(fila, 8).toString();
-        String nacionalidad = tbDatosEs.getValueAt(fila, 9).toString();
-        String peso = tbDatosEs.getValueAt(fila, 10).toString();
-        String estatura = tbDatosEs.getValueAt(fila, 11).toString();
+        String Posicion = tbDatosEs.getValueAt(fila, 9).toString();
+        String SubPosicion = tbDatosEs.getValueAt(fila, 10).toString();
+        String nacionalidad = tbDatosEs.getValueAt(fila, 11).toString();
+        String peso = tbDatosEs.getValueAt(fila, 12).toString();
+        String estatura = tbDatosEs.getValueAt(fila, 13).toString();
+
+        if (fila < 0) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione el registro a modificar antes de presionar el botón");
+            return;
+        }
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bddescuelafutbol1", "root", "24589790Br@yan");
-            CallableStatement cstmt = conn.prepareCall("{CALL ActualizarEstudiante(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
-            cstmt.setString(1, ci);
-            cstmt.setString(2, nombre);
-            cstmt.setString(3, apellido);
-            cstmt.setString(4, fechaNa);
-            cstmt.setString(5, telefono);
-            cstmt.setString(6, provincia);
-            cstmt.setString(7, ciudad);
-            cstmt.setString(8, correo);
-            cstmt.setString(9, edad);
-            cstmt.setString(10, nacionalidad);
-            cstmt.setString(11, peso);
-            cstmt.setString(12, estatura);
-            cstmt.execute();
 
-            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
-            conn.close();
+            String SQL = "CALL ActualizarEstudiante(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement actu = conectado.prepareStatement(SQL);
+            actu.setString(1, ci);
+            actu.setString(2, nombre);
+            actu.setString(3, apellido);
+            actu.setString(4, fechaNa);
+            actu.setString(5, telefono);
+            actu.setString(6, provincia);
+            actu.setString(7, ciudad);
+            actu.setString(8, correo);
+            actu.setString(9, edad);
+            actu.setString(10, Posicion);
+            actu.setString(11, SubPosicion);
+            actu.setString(12, nacionalidad);
+            actu.setString(13, peso);
+            actu.setString(14, estatura);
+
+            int filasActualizadas = actu.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar los datos");
+            }
+
+            // Actualizar la tabla después de la actualización
+            limpiarTabla();
+            cargarTabla();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila para actualizar");
     }
-}
 
-
-    public void eliminarCliente(){
-         
-        int fila = tbDatosEs.getSelectedRow();
-        String valor = tbDatosEs.getValueAt(fila, 0).toString();
-        
-        try {
-            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '"+valor+"'");
-            eliminar.executeUpdate();
-            limpiarTabla();
-            cargarTabla();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e + " No se pudo eliminar el registro");
-        }
+    public void limpiarTabla() {
+        modelo.setDataVector(null, new Object[]{"Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"});
     }
-    
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-        EstudianteControlador ec = new EstudianteControlador();
-        ArrayList<Object[]> lista = ec.datosEstudiante();
-        for (Object[] Filas : lista) {
-            modelo.addRow(Filas);
-            
-        }
-        tbDatosEs.setModel(modelo);
-    }//GEN-LAST:event_formInternalFrameActivated
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-        actualizarDatos(); 
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
-    
-    
-    
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbDatosEs;
+    private javax.swing.JButton txtActualizar;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JButton txtEliminar;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

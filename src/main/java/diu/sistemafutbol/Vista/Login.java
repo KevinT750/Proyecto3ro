@@ -24,6 +24,8 @@ public class Login extends javax.swing.JFrame {
         btnAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusTraversalPolicyProvider(true);
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel3.setText("CONTRASEÑA");
@@ -112,13 +114,8 @@ public class Login extends javax.swing.JFrame {
         Entrenador e = new Entrenador();
         e.setUsuario(txtUsuario.getText());
         e.setContrasena(txtContrasenia.getText());
-        boolean ver = ec.inisiarSesion(e.getUsuario(), e.getContrasena());
-        if (ver == true) {
-            Menu m = new Menu();
-            m.setVisible(ver);
-            this.dispose();
-
-        }
+        
+        ec.inisiarSesion(e);
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
