@@ -4,13 +4,25 @@
  */
 package diu.sistemafutbol.Vista;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import diu.sistemafutbol.Controlador.Controlador;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -81,6 +93,7 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbRol = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -165,15 +178,18 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("pdf");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -190,6 +206,14 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(376, 376, 376)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,9 +231,11 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,11 +283,24 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void txtCedulaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaMouseEntered
-        // TODO add your handling code here:
+        Entrenador entrenador = new Entrenador();
+        entrenador.setNombreEnt(title);
     }//GEN-LAST:event_txtCedulaMouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        PdfEntrenador pdf = new PdfEntrenador(LocalDate.now(), ListaEntrenador);
+        try {
+            pdf.CrearPdf();
+        } catch (DocumentException ex) {
+            Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiarTabla() {
         modelo.setDataVector(null, new Object[]{"Nro", "Cedula", "Nombre", "Apellido", "Teléfono", "Usuario", "Contraseña", "Rol"});
     }
+
     public void eliminarCliente() {
 
         int fila = tbEntrenador.getSelectedRow();
@@ -277,8 +316,57 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
         }
     }
 
+    /*public void generarEntrenador() {
+
+        try {
+            FileOutputStream ar = new FileOutputStream("Entrenadores.pdf");
+            Document d = new Document();
+            PdfWriter.getInstance(d, ar);
+            d.open();
+
+            Paragraph parrafo = new Paragraph();
+            Paragraph titulo = parrafo;
+            titulo.add("Lista de Entrenadores");
+            parrafo.add("La escuela de fútbol \"IMBABURA\" se enorgullece de "
+                    + "contar con un equipo de entrenadores altamente calificados "
+                    + "y dedicados, comprometidos con el desarrollo deportivo y personal"
+                    + " de cada estudiante. A continuación, se presenta una "
+                    + "tabla con los datos de los entrenadores");
+            titulo.setAlignment(1);
+            parrafo.setAlignment(0);
+            d.add(titulo);
+            d.add(parrafo);
+            int rowCount = tbEntrenador.getRowCount();
+            int columnCount = tbEntrenador.getColumnCount();
+
+            // Recorrer todas las filas y columnas de la tabla
+            for (int row = 0; row < rowCount; row++) {
+                for (int col = 0; col < columnCount; col++) {
+                    // Obtener el valor de la celda en la posición actual
+                    Object value = tbEntrenador.getValueAt(row, col);
+
+                    // Agregar el valor al documento PDF
+                    d.add(new Paragraph(value != null ? value.toString() : ""));
+                }
+            }
+
+            // Cerrar el documento
+            d.close();
+            File file = new File("entrenadores.pdf");
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(file);
+            }
+
+            System.out.println("Documento PDF generado correctamente.");
+        } catch (DocumentException | IOException e) {
+            System.out.println(e);
+        }
+
+    }*/
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbRol;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
