@@ -38,7 +38,7 @@ public class EstudianteControlador {
 
     public void crearEsudiante(Estudiante es) {
         try {
-            if (es.getEdad() <= 18) {
+            
                 String SQL = "CALL AgregarEstudiante ('" + es.getCiEstudiante() + "','"
                         + es.getNombres() + "','"
                         + es.getApellidos() + "','"
@@ -52,7 +52,7 @@ public class EstudianteControlador {
                         + es.getSubposicion() + "','"
                         + es.getNacionalidad() + "','"
                         + es.getPeso() + "','"
-                        + es.getEstatura() + "');";
+                        + es.getEstatura() + "')";
                 ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
 
                 int res = ejecutar.executeUpdate();
@@ -62,12 +62,9 @@ public class EstudianteControlador {
 
                 } else {
 
-                    System.out.println("Revise la informacion ingresada");
+                    System.out.println("Revise la informacion ingresada del estudiante");
                 }
-            } else {
             
-            JOptionPane.showMessageDialog(null, "La edad Supera los 18 Años, Ingrese la edad Nuevamente");
-            }
         } catch (SQLException e) {
             System.out.println("COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);
         }
@@ -113,8 +110,8 @@ public class EstudianteControlador {
             ResultSet res = ejecutar.executeQuery();
             while (res.next()) {
 
-                Object[] fila = new Object[14];
-                for (int i = 0; i < 14; i++) {
+                Object[] fila = new Object[15];
+                for (int i = 0; i < 15; i++) {
                     fila[i] = res.getObject(i + 1);
 
                 }
@@ -142,8 +139,37 @@ public class EstudianteControlador {
             ResultSet res = ejecutar.executeQuery();
             while (res.next()) {
 
-                Object[] fila = new Object[14];
-                for (int i = 0; i < 14; i++) {
+                Object[] fila = new Object[15];
+                for (int i = 0; i < 15; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
+    public ArrayList<Object[]> estudiantesCategoria(int n) {
+
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "CALL MostrarEstudiantesPorCategoria(" + n + ");";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[15];
+                for (int i = 0; i < 15; i++) {
                     fila[i] = res.getObject(i + 1);
 
                 }
@@ -160,6 +186,63 @@ public class EstudianteControlador {
 
         return null;
 
+    }
+
+    public ArrayList<Object[]> datosActualizar(String n) {
+
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "CALL ObtenerDatosEstudiantePorCedula(" + n + ");";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+                Object[] fila = new Object[8];
+                fila[0] = res.getString("NOMBRES");
+                fila[1] = res.getString("APELLIDOS");
+                fila[2] = res.getString("TELEFONO");
+                fila[3] = res.getString("CORREO");
+                fila[4] = res.getString("Posicion");
+                fila[5] = res.getString("SubPosicion");
+                fila[6] = res.getDouble("PESO");
+                fila[7] = res.getDouble("ESTATURA");
+
+                listaTotalRegistro.add(fila);
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+
+    public void actualizarEstudiantes(Estudiante es) {
+        try {
+            String SQL = "CALL ActualizarDatosEstudiante('" + es.getCiEstudiante() + "', '"
+                    + es.getNombres() + "', '"
+                    + es.getApellidos() + "', '"
+                    + es.getTelefono() + "', '"
+                    + es.getCorreo() + "', '"
+                    + es.getPosicion() + "', '"
+                    + es.getSubposicion() + "', "
+                    + es.getPeso() + ", "
+                    + es.getEstatura() + ");";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+
+            int res = ejecutar.executeUpdate();
+            if (res > 0) {
+                System.out.println("Estudiante Actualizado con Exito");
+                ejecutar.close();
+            } else {
+                System.out.println("Revise la información ingresada para actualizar");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 }

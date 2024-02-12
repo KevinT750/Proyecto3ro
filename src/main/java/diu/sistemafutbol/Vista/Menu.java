@@ -4,8 +4,6 @@
  */
 package diu.sistemafutbol.Vista;
 
-import DIU.Vista.CrearEstudiante;
-
 /**
  *
  * @author kevin
@@ -34,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         opCrearUs = new javax.swing.JMenuItem();
         opMostrarUs = new javax.swing.JMenuItem();
+        opActualizar = new javax.swing.JMenuItem();
         Entrenador = new javax.swing.JMenu();
         opEntrenador = new javax.swing.JMenuItem();
         opEntrnador = new javax.swing.JMenuItem();
@@ -78,6 +77,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(opMostrarUs);
+
+        opActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opActualizar.setText("Actualizar Estudiante");
+        opActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opActualizarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opActualizar);
 
         jMenuBar1.add(jMenu1);
 
@@ -143,6 +151,12 @@ public class Menu extends javax.swing.JFrame {
         me.show();
     }//GEN-LAST:event_opEntrnadorActionPerformed
 
+    private void opActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opActualizarActionPerformed
+        BuscadorEstudiante be = new BuscadorEstudiante();
+        Escritorio.add(be);
+        be.show();
+    }//GEN-LAST:event_opActualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,10 +194,11 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Entrenador;
-    private javax.swing.JDesktopPane Escritorio;
+    public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jblBienvenido;
+    private javax.swing.JMenuItem opActualizar;
     private javax.swing.JMenuItem opCrearUs;
     private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opEntrnador;
