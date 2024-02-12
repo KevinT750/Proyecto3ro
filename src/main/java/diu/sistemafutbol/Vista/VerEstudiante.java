@@ -307,7 +307,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
-        eliminarCliente();
+        eliminarEstudiante();
     }//GEN-LAST:event_txtEliminarActionPerformed
 
     private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
@@ -321,7 +321,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_tbDatosEsMouseClicked
 
-    public void eliminarCliente() {
+    public void eliminarEstudiante() {
 
         int fila = tbDatosEs.getSelectedRow();
         String valor = tbDatosEs.getValueAt(fila, 0).toString();

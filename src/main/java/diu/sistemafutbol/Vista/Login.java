@@ -38,6 +38,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Login");
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -114,6 +115,7 @@ public class Login extends javax.swing.JFrame {
         Entrenador e = new Entrenador();
         e.setUsuario(txtUsuario.getText());
         e.setContrasena(txtContrasenia.getText());
+        this.dispose();
         
         ec.inisiarSesion(e);
 
