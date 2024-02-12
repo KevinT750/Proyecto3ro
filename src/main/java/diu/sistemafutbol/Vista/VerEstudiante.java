@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }
 
     public void setModelo() {
-        String[] cabecera = {"Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"};
+        String[] cabecera = {"Nro", "Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"};
         modelo.setColumnIdentifiers(cabecera);
         tbDatosEs.setModel(modelo);
     }
@@ -43,26 +44,27 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     private void setDatos() {
 
         Object[] filas = new Object[modelo.getColumnCount()];
-
+        int contador = 1;
         for (Estudiante datos : ListaPersonaModelo) {
 
-            filas[0] = datos.getCiEstudiante();
-            filas[1] = datos.getNombres();
-            filas[2] = datos.getApellidos();
-            filas[3] = datos.getFechaNacimiento();
-            filas[4] = datos.getTelefono();
-            filas[5] = datos.getProvincia();
-            filas[6] = datos.getCiudad();
-            filas[7] = datos.getCorreo();
-            filas[8] = datos.getEdad();
-            filas[9] = datos.getPosicion();
-            filas[10] = datos.getSubposicion();
-            filas[11] = datos.getNacionalidad();
-            filas[12] = datos.getPeso();
-            filas[13] = datos.getEstatura();
+            filas[0] = contador;
+            filas[1] = datos.getCiEstudiante();
+            filas[2] = datos.getNombres();
+            filas[3] = datos.getApellidos();
+            filas[4] = datos.getFechaNacimiento();
+            filas[5] = datos.getTelefono();
+            filas[6] = datos.getProvincia();
+            filas[7] = datos.getCiudad();
+            filas[8] = datos.getCorreo();
+            filas[9] = datos.getEdad();
+            filas[10] = datos.getPosicion();
+            filas[11] = datos.getSubposicion();
+            filas[12] = datos.getNacionalidad();
+            filas[13] = datos.getPeso();
+            filas[14] = datos.getEstatura();
 
             modelo.addRow(filas);
-
+            contador++;
         }
         tbDatosEs.setModel(modelo);
     }
@@ -71,7 +73,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        Escritorio = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbDatosEs = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -110,9 +112,9 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
-        jDesktopPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Escritorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDesktopPane1MouseClicked(evt);
+                EscritorioMouseClicked(evt);
             }
         });
 
@@ -127,6 +129,11 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbDatosEs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDatosEsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbDatosEs);
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -168,80 +175,80 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(295, 295, 295))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel1)
                         .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(txtEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(EscritorioLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(txtActualizar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(Escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(Escritorio)
         );
 
         pack();
@@ -273,12 +280,12 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         }
         tbDatosEs.setModel(modelo);
     }
-    private void jDesktopPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDesktopPane1MouseClicked
+    private void EscritorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EscritorioMouseClicked
         this.limpiarTabla();
         cargarTabla();
 
 
-    }//GEN-LAST:event_jDesktopPane1MouseClicked
+    }//GEN-LAST:event_EscritorioMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 
@@ -300,7 +307,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
-        eliminarCliente();
+        eliminarEstudiante();
     }//GEN-LAST:event_txtEliminarActionPerformed
 
     private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
@@ -309,7 +316,12 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         cargarTabla();
     }//GEN-LAST:event_txtActualizarActionPerformed
 
-    public void eliminarCliente() {
+    private void tbDatosEsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosEsMouseClicked
+
+
+    }//GEN-LAST:event_tbDatosEsMouseClicked
+
+    public void eliminarEstudiante() {
 
         int fila = tbDatosEs.getSelectedRow();
         String valor = tbDatosEs.getValueAt(fila, 0).toString();
@@ -367,7 +379,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             actu.setString(14, estatura);
 
             int filasActualizadas = actu.executeUpdate();
-            
 
             if (filasActualizadas > 0) {
                 JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
@@ -387,7 +398,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         modelo.setDataVector(null, new Object[]{"Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"});
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
