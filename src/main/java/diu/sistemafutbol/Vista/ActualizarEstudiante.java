@@ -20,6 +20,8 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
     public ActualizarEstudiante() {
         initComponents();
         Estudiante.posicion(cbPosicion);
+        btnActualizar.setVisible(false);
+        btnActualizar.setEnabled(false);
 
     }
 
@@ -51,12 +53,12 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         jblCedula5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jblCedula7 = new javax.swing.JLabel();
-        txtActualizar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jblCedula = new javax.swing.JLabel();
         jbaño = new javax.swing.JLabel();
         jblEdad = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnPDF = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -111,10 +113,10 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         jblCedula7.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jblCedula7.setText("Altura:");
 
-        txtActualizar.setText("ACTUALIZAR");
-        txtActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtActualizarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -125,17 +127,17 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
 
         jblEdad.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
 
-        jButton1.setText("PDF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPDF.setText("PDF");
+        btnPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPDFActionPerformed(evt);
             }
         });
 
-        jButton2.setText("MODIFICAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -157,12 +159,12 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jblCedula5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblCedula7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbaño, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jblEdad, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnPDF, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnModificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -197,7 +199,9 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbPosicion, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(txtActualizar, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                                        .addComponent(btnActualizar)
+                                        .addGap(72, 72, 72)))
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addGap(75, 75, 75)
@@ -215,12 +219,10 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
                                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                                 .addGap(73, 73, 73)
                                                 .addComponent(jblCedula7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(45, 45, 45)
-                                                .addComponent(jButton2)))
+                                            .addComponent(btnModificar))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton1)
+                                            .addComponent(btnPDF)
                                             .addComponent(txtAltura)))))
                             .addComponent(jblCedula1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -277,9 +279,9 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
                                     .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtActualizar)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnPDF)
+                    .addComponent(btnModificar)
+                    .addComponent(btnActualizar))
                 .addGap(26, 26, 26))
         );
 
@@ -301,7 +303,7 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         Estudiante.subposicion(cbPosicion, cbSubPosicion);
     }//GEN-LAST:event_cbPosicionActionPerformed
 
-    private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         validarNP(txtNombre.getText(), txtApellido.getText());
         System.out.println(txtNombre.getText()+ txtApellido.getText());
         System.out.println(jblCedula);
@@ -317,20 +319,23 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         EstudianteControlador ec = new EstudianteControlador();
         
         ec.actualizarEstudiantes(es);
-    }//GEN-LAST:event_txtActualizarActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
         pdfEstudiante pd= new pdfEstudiante(LocalDate.now(), txtNombre.getText(), txtApellido.getText(),
                 jblCedula.getText(), txtTelefono.getText(),
                 jblEdad.getText(), txtCorreo.getText(),cbPosicion.getSelectedItem().toString()
                 ,cbSubPosicion.getSelectedItem().toString()
                 , txtPeso.getText(), txtAltura.getText());
         pd.crarPdfE();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPDFActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        btnPDF.setEnabled(false);
+        btnPDF.setVisible(false);
+        btnActualizar.setVisible(true);
+        btnActualizar.setEnabled(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     public void validarNP(String nombre, String apellido) {
 
@@ -374,10 +379,11 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnPDF;
     public static javax.swing.JComboBox<String> cbPosicion;
     public static javax.swing.JComboBox<String> cbSubPosicion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
@@ -392,7 +398,6 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
     public static javax.swing.JLabel jblEdad;
     private javax.swing.JLabel jblNombre;
     private javax.swing.JLabel jblNombre3;
-    private javax.swing.JButton txtActualizar;
     public static javax.swing.JTextField txtAltura;
     public static javax.swing.JTextField txtApellido;
     public static javax.swing.JTextField txtCorreo;

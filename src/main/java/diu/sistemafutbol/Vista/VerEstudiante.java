@@ -86,6 +86,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         txtActualizar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cbCategoria = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -191,6 +192,13 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("PDF");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         Escritorio.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -201,6 +209,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         Escritorio.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(cbCategoria, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -223,7 +232,9 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(482, 482, 482)
+                        .addGap(307, 307, 307)
+                        .addComponent(jButton1)
+                        .addGap(100, 100, 100)
                         .addComponent(txtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(133, 133, 133)
                         .addComponent(txtActualizar)))
@@ -258,7 +269,8 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtActualizar)
-                    .addComponent(txtEliminar))
+                    .addComponent(txtEliminar)
+                    .addComponent(jButton1))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -328,6 +340,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
 
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         eliminarEstudiante();
+
     }//GEN-LAST:event_txtEliminarActionPerformed
 
     private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
@@ -344,6 +357,14 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     private void cbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoriaActionPerformed
         datosCategoria();
     }//GEN-LAST:event_cbCategoriaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ArrayList<Object[]> lista = new ArrayList<>();
+        EstudianteControlador ec= new EstudianteControlador();
+        lista = ec.datosEstudiante();
+        PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
+        pdf.crearpdfTablas();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void datosCategoria() {
         EstudianteControlador ec = new EstudianteControlador();
@@ -387,7 +408,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     public void eliminarEstudiante() {
 
         int fila = tbDatosEs.getSelectedRow();
-        String valor = tbDatosEs.getValueAt(fila, 0).toString();
+        String valor = tbDatosEs.getValueAt(fila, 1).toString();
 
         try {
             PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '" + valor + "'");
@@ -463,6 +484,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JComboBox<String> cbCategoria;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

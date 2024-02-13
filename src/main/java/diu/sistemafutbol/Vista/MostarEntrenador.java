@@ -240,7 +240,15 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addGap(128, 128, 128)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(195, 195, 195)
+                .addComponent(btnEliminar)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,37 +260,27 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
                         .addGap(91, 91, 91))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81))))
+                        .addGap(83, 83, 83))))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                            .addGap(123, 123, 123)
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1)
-                            .addGap(195, 195, 195)
-                            .addComponent(btnEliminar)
-                            .addGap(252, 252, 252))
-                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+                            .addGap(39, 39, 39)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                    .addGap(39, 39, 39)
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-                                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(37, 37, 37)))
-                            .addGap(31, 31, 31)))))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
+                            .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37)))
+                    .addGap(31, 31, 31)))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,9 +291,14 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
                 .addComponent(btnUsuario)
                 .addGap(18, 18, 18)
                 .addComponent(btnAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jButton1)
+                    .addComponent(btnEliminar))
+                .addGap(36, 36, 36))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -310,12 +313,7 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
                     .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3))
-                    .addGap(292, 292, 292)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jButton1)
-                        .addComponent(btnEliminar))
-                    .addContainerGap(63, Short.MAX_VALUE)))
+                    .addContainerGap(378, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -445,13 +443,14 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
     public void eliminarEntrenador() {
 
         int fila = tbEntrenador.getSelectedRow();
-        String valor = tbEntrenador.getValueAt(fila, 0).toString();
+        String valor = tbEntrenador.getValueAt(fila, 1).toString();
 
         try {
-            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM entrenador WHERE CedulaEntrenador = '" + valor + "'");
+            PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM entrenadores WHERE CedulaEntrenador = '" + valor + "'");
             eliminar.executeUpdate();
             limpiarTabla();
             cargarTabla();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e + " No se pudo eliminar el registro");
         }

@@ -76,7 +76,10 @@
                                               <Component id="txtPeso" alignment="0" min="-2" pref="253" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="txtActualizar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
@@ -99,14 +102,11 @@
                                                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                                   <Component id="jblCedula7" min="-2" pref="105" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnPDF" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtAltura" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -188,9 +188,9 @@
                   </Group>
                   <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPDF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -359,12 +359,12 @@
             <Property name="text" type="java.lang.String" value="Altura:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="txtActualizar">
+        <Component class="javax.swing.JButton" name="btnActualizar">
           <Properties>
             <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtActualizarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jblCedula">
@@ -395,20 +395,20 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnPDF">
           <Properties>
             <Property name="text" type="java.lang.String" value="PDF"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPDFActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="MODIFICAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
