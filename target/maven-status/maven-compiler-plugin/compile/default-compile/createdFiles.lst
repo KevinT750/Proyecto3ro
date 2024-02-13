@@ -58,9 +58,11 @@ diu\sistemafutbol\Vista\CrearEntrenador.class
 diu\sistemafutbol\Vista\Main.class
 diu\sistemafutbol\Vista\VerEstudiante$1.class
 diu\sistemafutbol\Vista\CrearEstudiante$5.class
+diu\sistemafutbol\Vista\pdfEstudiante.class
 diu\sistemafutbol\Vista\Menu$6.class
 diu\sistemafutbol\Vista\ActualizarEstudiante.class
 diu\sistemafutbol\Vista\MostarEntrenador$7.class
+diu\sistemafutbol\Vista\ActualizarEstudiante$3.class
 diu\sistemafutbol\Vista\MostarEntrenadorUsuario$7.class
 diu\sistemafutbol\Vista\VerEstudiante$4.class
 diu\sistemafutbol\Vista\MostrarUsuario$6.class

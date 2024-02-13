@@ -25,12 +25,12 @@ public class BuscadorEstudiante extends javax.swing.JInternalFrame {
     public BuscadorEstudiante() {
         initComponents();
         setModelo();
-        
+
     }
 
     public void setModelo() {
 
-        String[] cabecera = {"Nombre", "Apellido", "Telefono", "Correo", "Posicion", "SubPosicion", "Peso", "Altura"};
+        String[] cabecera = {"Nombre", "Apellido", "Edad","Telefono", "Correo", "Posicion", "SubPosicion", "Peso", "Altura"};
         modelo.setColumnIdentifiers(cabecera);
         tbEstudiante.setModel(modelo);
     }
@@ -139,40 +139,44 @@ public class BuscadorEstudiante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void tbEstudianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudianteMouseClicked
-        DefaultTableModel dtm = (DefaultTableModel)tbEstudiante.getModel();
-        
+        DefaultTableModel dtm = (DefaultTableModel) tbEstudiante.getModel();
+
         ActualizarEstudiante ae = new ActualizarEstudiante();
         ae.txtNombre.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 0).toString());
         ae.txtApellido.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 1).toString());
-        ae.txtTelefono.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 2).toString());
-        ae.txtCorreo.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 3).toString());
-        ae.txtPeso.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 6).toString());
-        ae.txtAltura.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 7).toString());
+        ae.jblEdad.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 2).toString());
+        ae.txtTelefono.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 3).toString());
+        ae.txtCorreo.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 4).toString());
+        ae.txtPeso.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 7).toString());
+        ae.txtAltura.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 8).toString());
+        ae.cbPosicion.setSelectedItem(dtm.getValueAt(tbEstudiante.getSelectedRow(), 5).toString());
+        ae.cbSubPosicion.setSelectedItem(dtm.getValueAt(tbEstudiante.getSelectedRow(), 6).toString());      
         ae.jblCedula.setText(txtBuscar.getText());
         Escritorio.add(ae);
         ae.show();
-        
+
     }//GEN-LAST:event_tbEstudianteMouseClicked
     private void setDatos() {
 
         Object[] filas = new Object[modelo.getColumnCount()];
-        
+
         for (Estudiante datos : ListaEstudiante) {
             filas[0] = datos.getNombres();
             filas[1] = datos.getApellidos();
-            filas[2] = datos.getTelefono();
-            filas[3] = datos.getCorreo();
-            filas[4] = datos.getPosicion();
-            filas[5] = datos.getSubposicion();
-            filas[6] = datos.getPeso();
-            filas[7] = datos.getEstatura();
+            filas[2] = datos.getEdad();
+            filas[3] = datos.getTelefono();
+            filas[4] = datos.getCorreo();
+            filas[5] = datos.getPosicion();
+            filas[6] = datos.getSubposicion();
+            filas[7] = datos.getPeso();
+            filas[8] = datos.getEstatura();
 
             modelo.addRow(filas);
-           
+
         }
         tbEstudiante.setModel(modelo);
     }
-    
+
     public void cargarTabla() {
 
         EstudianteControlador ec = new EstudianteControlador();
