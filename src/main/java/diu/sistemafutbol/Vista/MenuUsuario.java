@@ -91,7 +91,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        MostrarUsuario mu = new MostrarUsuario();
+        VerEstudianteUsuario mu = new VerEstudianteUsuario();
         Escritorio.add(mu);
         mu.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed

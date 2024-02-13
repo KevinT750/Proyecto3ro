@@ -172,10 +172,12 @@ public class PdfETablas {
     
     public void crearpdfTablasCat(String cat) {
         try {
+            Paragraph titul;
             archivo = new FileOutputStream(cat+".pdf");
             PdfWriter.getInstance(documento, archivo);
             documento.open();
-            titulo.setAlignment(1);
+            titul = new Paragraph("Lista de Estudiantes por Categoria ("+cat+")");
+            titul.setAlignment(1);
 
             documento.add(titulo);
             documento.add(Chunk.NEWLINE);

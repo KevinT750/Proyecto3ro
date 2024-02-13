@@ -7,18 +7,25 @@ package diu.sistemafutbol.Vista;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
 import java.awt.Color;
+import java.time.LocalDate;
 
 /**
  *
  * @author kevin
  */
-public class CrearEntrenador extends javax.swing.JInternalFrame {
-    
+public class ActualizarEntrenador extends javax.swing.JInternalFrame {
+
     Entrenador es = new Entrenador();
-    
-    public CrearEntrenador() {
+
+    public ActualizarEntrenador() {
         initComponents();
-        
+        btnPdf.setEnabled(true);
+        btnPdf.setVisible(true);
+        bntActualizar.setVisible(false);
+        bntActualizar.setEnabled(false);
+        txtUsuario.setEnabled(false);
+        txtContrasena.setEnabled(false);
+
     }
 
     /**
@@ -44,10 +51,13 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         cbUsuario = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
+        bntActualizar = new javax.swing.JButton();
+        btnPdf = new javax.swing.JButton();
+        jblCedula = new javax.swing.JLabel();
+        jblNumero = new javax.swing.JLabel();
 
         checkbox1.setLabel("checkbox1");
 
@@ -64,26 +74,36 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel2.setText("CEDULA:");
 
+        txtNombre.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel3.setText("NOMBRE:");
+
+        txtTelefono.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel4.setText("APELLIDO: ");
 
+        txtApellido.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
         jLabel5.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel5.setText("TELEFONO:");
+
+        txtContrasena.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel6.setText("USUARIO:");
 
+        txtUsuario.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+
         jLabel7.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel7.setText("CONTRASEÑA:");
 
-        jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -97,6 +117,26 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
         jLabel8.setText("ROL:");
 
+        bntActualizar.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        bntActualizar.setText("Actualizar");
+        bntActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntActualizarActionPerformed(evt);
+            }
+        });
+
+        btnPdf.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnPdf.setText("PDF");
+        btnPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPdfActionPerformed(evt);
+            }
+        });
+
+        jblCedula.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
+
+        jblNumero.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -109,20 +149,22 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnModificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(cbUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(bntActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnPdf, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jblCedula, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jblNumero, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(314, 314, 314)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -141,9 +183,9 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                    .addComponent(txtCedula))
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jblCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
                                 .addGap(46, 46, 46)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
@@ -157,18 +199,29 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
                             .addComponent(cbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bntActualizar)
+                .addGap(86, 86, 86)
+                .addComponent(btnModificar)
+                .addGap(86, 86, 86)
+                .addComponent(btnPdf)
+                .addGap(153, 153, 153))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1))
+                    .addComponent(jblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -185,9 +238,12 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addComponent(jButton1)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bntActualizar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnPdf))
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,67 +260,79 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        btnPdf.setEnabled(false);
+        btnPdf.setVisible(false);
+        bntActualizar.setVisible(true);
+        bntActualizar.setEnabled(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void cbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUsuarioActionPerformed
+        if (cbUsuario.getSelectedItem().equals("Usuario")) {
+            txtUsuario.setEnabled(false);
+            txtContrasena.setEnabled(false);
+
+        } else {
+
+            txtUsuario.setEnabled(true);
+            txtContrasena.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_cbUsuarioActionPerformed
+
+    private void bntActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntActualizarActionPerformed
         validarNP(txtNombre.getText(), txtApellido.getText());
         validarTelefono(txtTelefono.getText());
-        validarCedula(txtCedula.getText());
+        es.setCedulaE(jblCedula.getText());
         es.setRol(cbUsuario.getSelectedItem().toString());
         es.setUsuario(txtUsuario.getText());
         es.setContrasena(txtContrasena.getText());
         EntrenadorControlador ec = new EntrenadorControlador();
-        ec.CrearEntrenador(es);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ec.ActualizarEntrenador(es);
 
-    private void cbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUsuarioActionPerformed
-        
-        
-        
+    }//GEN-LAST:event_bntActualizarActionPerformed
 
-    }//GEN-LAST:event_cbUsuarioActionPerformed
+    private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
+        pdfEntrenadores pe = new pdfEntrenadores(LocalDate.now(), txtNombre.getText(), txtApellido.getText(),jblCedula.getText() , txtTelefono.getText());
+        pe.crarPdfAdministrador();
+    }//GEN-LAST:event_btnPdfActionPerformed
     public void validarNP(String nombre, String apellido) {
-        
+
         String ValidaNom = "^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+$";
         if (nombre.matches(ValidaNom)) {
             es.setNombreEnt(nombre);
             txtNombre.setForeground(null);
         } else {
-            
+
             txtNombre.setForeground(Color.red);
         }
-        
+
         if (apellido.matches(ValidaNom)) {
             es.setApellidoEnt(apellido);
             txtApellido.setForeground(null);
         } else {
-            
+
             txtApellido.setForeground(Color.red);
         }
     }
-    
+
     public void validarTelefono(String telefono) {
         String validar = "^09\\d+$";
-        
+
         if (telefono.matches(validar)) {
             es.setTelefono(telefono);
             txtTelefono.setForeground(null);
         }
         txtTelefono.setForeground(Color.red);
-        
+
     }
 
-    public void validarCedula(String cedula) {
-        String validar = "\\d{10}";
-        if (cedula.matches(validar)) {
-            es.setCedulaE(cedula);
-            txtCedula.setForeground(null);
-        } else {
-            txtCedula.setForeground(Color.red);
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbUsuario;
+    private javax.swing.JButton bntActualizar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnPdf;
+    public static javax.swing.JComboBox<String> cbUsuario;
     private java.awt.Checkbox checkbox1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -274,11 +342,12 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtContrasena;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtUsuario;
+    public static javax.swing.JLabel jblCedula;
+    public static javax.swing.JLabel jblNumero;
+    public static javax.swing.JTextField txtApellido;
+    public static javax.swing.JTextField txtContrasena;
+    public static javax.swing.JTextField txtNombre;
+    public static javax.swing.JTextField txtTelefono;
+    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

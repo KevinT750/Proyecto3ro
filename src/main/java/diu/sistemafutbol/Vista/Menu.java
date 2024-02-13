@@ -36,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
         Entrenador = new javax.swing.JMenu();
         opEntrenador = new javax.swing.JMenuItem();
         opEntrnador = new javax.swing.JMenuItem();
+        opActualizarE = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
@@ -100,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
         });
         Entrenador.add(opEntrenador);
 
-        opEntrnador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        opEntrnador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         opEntrnador.setText("Mostrar Entrenador");
         opEntrnador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +109,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         Entrenador.add(opEntrnador);
+
+        opActualizarE.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        opActualizarE.setText("Actualizar Entrenador");
+        opActualizarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opActualizarEActionPerformed(evt);
+            }
+        });
+        Entrenador.add(opActualizarE);
 
         jMenuBar1.add(Entrenador);
 
@@ -157,6 +167,12 @@ public class Menu extends javax.swing.JFrame {
         be.show();
     }//GEN-LAST:event_opActualizarActionPerformed
 
+    private void opActualizarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opActualizarEActionPerformed
+        buscadorEntrenador be = new buscadorEntrenador();
+        Escritorio.add(be);
+        be.show();
+    }//GEN-LAST:event_opActualizarEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +215,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jblBienvenido;
     private javax.swing.JMenuItem opActualizar;
+    private javax.swing.JMenuItem opActualizarE;
     private javax.swing.JMenuItem opCrearUs;
     private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opEntrnador;

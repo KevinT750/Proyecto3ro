@@ -277,4 +277,27 @@ public class EntrenadorControlador {
 
     }
     
+     public void ActualizarEntrenador(Entrenador es) {
+
+        try {
+            String SQL = "CALL actualizar_entrenador('" + es.getCedulaE()
+                    + "', '" + es.getNombreEnt()
+                    + "', '" + es.getApellidoEnt()
+                    + "', '" + es.getTelefono()
+                    + "', '" + es.getUsuario()
+                    + "', '" + es.getContrasena()
+                    + "', '" + es.getRol() + "')";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            int res = ejecutar.executeUpdate();
+            if (res > 0) {
+                System.out.println("Entrenador Actualizado con Exito");
+                ejecutar.close();
+
+            } else {
+
+                System.out.println("Revise la informacion ingresada");
+            }
+        } catch (Exception e) {
+        }
+    }
 }
