@@ -2,6 +2,7 @@ package diu.sistemafutbol.Vista;
 
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
+import diu.sistemafutbol.Modelo.Imagenes;
 
 public class Login extends javax.swing.JFrame {
 
@@ -9,6 +10,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Login");
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -76,7 +79,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
             .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(EscritorioLayout.createSequentialGroup()
                     .addGap(102, 102, 102)
@@ -89,22 +92,20 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(63, 63, 63)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(85, Short.MAX_VALUE)))
+                    .addContainerGap(17, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,11 +115,16 @@ public class Login extends javax.swing.JFrame {
         Entrenador e = new Entrenador();
         e.setUsuario(txtUsuario.getText());
         e.setContrasena(txtContrasenia.getText());
-        
+        this.dispose();
+            
         ec.inisiarSesion(e);
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    
+  
+    
+    
     /**
      * @param args the command line arguments
      */

@@ -13,6 +13,8 @@ import java.time.LocalDate;
  */
 public class Pagos {
     private int idPago;
+    private String NombreEs;
+    private String ApellidoEs;
     private Estudiante ciEstudiante;
     private LocalDate fechaPago;
     private String estado;
@@ -21,13 +23,33 @@ public class Pagos {
     public Pagos() {
     }
 
-    public Pagos(int idPago, Estudiante ciEstudiante, LocalDate fechaPago, String estado, double monto) {
+    public Pagos(int idPago, String NombreEs, String ApellidoEs, Estudiante ciEstudiante, LocalDate fechaPago, String estado, double monto) {
         this.idPago = idPago;
+        this.NombreEs = NombreEs;
+        this.ApellidoEs = ApellidoEs;
         this.ciEstudiante = ciEstudiante;
         this.fechaPago = fechaPago;
         this.estado = estado;
         this.monto = monto;
     }
+
+    public String getNombreEs() {
+        return NombreEs;
+    }
+
+    public void setNombreEs(String NombreEs) {
+        this.NombreEs = NombreEs;
+    }
+
+    public String getApellidoEs() {
+        return ApellidoEs;
+    }
+
+    public void setApellidoEs(String ApellidoEs) {
+        this.ApellidoEs = ApellidoEs;
+    }
+
+  
 
     
 

@@ -4,8 +4,6 @@
  */
 package diu.sistemafutbol.Vista;
 
-import DIU.Vista.CrearEstudiante;
-
 /**
  *
  * @author Belial
@@ -34,9 +32,12 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         opCrearUs = new javax.swing.JMenuItem();
         opMostrarUs = new javax.swing.JMenuItem();
+        opActualizar = new javax.swing.JMenuItem();
         Entrenador = new javax.swing.JMenu();
         opEntrenador = new javax.swing.JMenuItem();
         opEntrnador = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
@@ -79,6 +80,15 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(opMostrarUs);
 
+        opActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opActualizar.setText("Actualizar Estudiante");
+        opActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opActualizarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opActualizar);
+
         jMenuBar1.add(jMenu1);
 
         Entrenador.setText("Entrenador");
@@ -102,6 +112,18 @@ public class Menu extends javax.swing.JFrame {
         Entrenador.add(opEntrnador);
 
         jMenuBar1.add(Entrenador);
+
+        jMenu2.setText("Gestion de Pagos");
+
+        jMenuItem1.setText("Pagos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -143,6 +165,19 @@ public class Menu extends javax.swing.JFrame {
         me.show();
     }//GEN-LAST:event_opEntrnadorActionPerformed
 
+    private void opActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opActualizarActionPerformed
+        BuscadorEstudiante be = new BuscadorEstudiante();
+        Escritorio.add(be);
+        be.show();
+    }//GEN-LAST:event_opActualizarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        GestionPagos pagos = new GestionPagos();
+        Escritorio.add(pagos);
+        pagos.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,10 +215,13 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Entrenador;
-    private javax.swing.JDesktopPane Escritorio;
+    public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel jblBienvenido;
+    private javax.swing.JMenuItem opActualizar;
     private javax.swing.JMenuItem opCrearUs;
     private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opEntrnador;

@@ -214,4 +214,67 @@ public class EntrenadorControlador {
         return null;
 
     }
+    
+    
+    //PDF
+    public ArrayList<Object[]> datosUsuario() {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "SELECT * FROM entrenadores WHERE Rol ='USUARIO';";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+    
+    
+    
+    public ArrayList<Object[]> datosAdministrador() {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+        try {
+            String SQL = "SELECT * FROM entrenadores WHERE Rol ='ADMINISTRADOR';";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+            while (res.next()) {
+
+                Object[] fila = new Object[8];
+                for (int i = 0; i < 8; i++) {
+                    fila[i] = res.getObject(i + 1);
+
+                }
+                //fila[0] = cont;
+                listaTotalRegistro.add(fila);
+                //cont++;
+            }
+
+            ejecutar.close();
+            return listaTotalRegistro;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+
+    }
+    
 }
