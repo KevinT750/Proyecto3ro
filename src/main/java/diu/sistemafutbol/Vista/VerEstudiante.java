@@ -87,6 +87,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         cbCategoria = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        btnPrebenjamines = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -199,6 +200,13 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
+        btnPrebenjamines.setText("PDF");
+        btnPrebenjamines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrebenjaminesActionPerformed(evt);
+            }
+        });
+
         Escritorio.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -210,6 +218,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         Escritorio.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(cbCategoria, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(btnPrebenjamines, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -217,17 +226,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(EscritorioLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(EscritorioLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(EscritorioLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -247,20 +245,39 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(218, 218, 218))
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPrebenjamines)
+                .addGap(274, 274, 274))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(btnPrebenjamines)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,7 +288,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                     .addComponent(txtActualizar)
                     .addComponent(txtEliminar)
                     .addComponent(jButton1))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -360,11 +377,46 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ArrayList<Object[]> lista = new ArrayList<>();
-        EstudianteControlador ec= new EstudianteControlador();
+        EstudianteControlador ec = new EstudianteControlador();
         lista = ec.datosEstudiante();
         PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
         pdf.crearpdfTablas();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnPrebenjaminesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrebenjaminesActionPerformed
+        ArrayList<Object[]> lista = new ArrayList<>();
+        EstudianteControlador ec = new EstudianteControlador();
+        String categoriaSeleccionada = cbCategoria.getSelectedItem().toString();
+        int categoriaID;
+
+        // Determinar el ID de la categoría basado en el nombre seleccionado
+        switch (categoriaSeleccionada) {
+            case "Prebenjamines":
+                categoriaID = 1;
+                break;
+            case "Benjamines":
+                categoriaID = 2;
+                break;
+            case "Alevines":
+                categoriaID = 3;
+                break;
+            case "Infantiles":
+                categoriaID = 4;
+                break;
+            case "Cadetes":
+                categoriaID = 5;
+                break;
+            case "Juveniles":
+                categoriaID = 6;
+                break;
+            default:
+                // Si la categoría no coincide con ninguna de las anteriores, salir del método
+                return;
+        }
+        lista = ec.estudiantesCategoria(categoriaID);
+        PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
+        pdf.crearpdfTablasCat(categoriaSeleccionada );
+    }//GEN-LAST:event_btnPrebenjaminesActionPerformed
 
     public void datosCategoria() {
         EstudianteControlador ec = new EstudianteControlador();
@@ -483,6 +535,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JButton btnPrebenjamines;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
