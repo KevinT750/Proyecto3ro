@@ -5,11 +5,16 @@
 package diu.sistemafutbol.Vista;
 
 import diu.sistemafutbol.Controlador.Controlador;
+import diu.sistemafutbol.Controlador.EstudianteControlador;
+import diu.sistemafutbol.Controlador.PagosControlador;
+import diu.sistemafutbol.Modelo.Estudiante;
 import diu.sistemafutbol.Modelo.Pagos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class GestionPagos extends javax.swing.JInternalFrame {
     ArrayList<Pagos> ListaPagosModelo = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
+     private List<Pagos> pagosList;
     
      Controlador conectar = new Controlador();
     Connection conectado = (Connection) conectar.conectar();
@@ -32,16 +38,35 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         setModelo();
     }
 
-   
+    
     public void setModelo() {
-        String[] cabecera = {"Cédula", "Nombres", "Apellidos", "Fecha de Paago","Estado", "Monto"};
+        String[] cabecera = {"Cédula", "Nombres", "Apellidos", "Fecha de Pago","Estado", "Monto"};
         modelo.setColumnIdentifiers(cabecera);
         tblPagos.setModel(modelo);
     }
     
     
     
-    
+    private void setDatos() {
+
+        Object[] filas = new Object[modelo.getColumnCount()];
+        int contador = 1;
+        for (Pagos datos : ListaPagosModelo) {
+
+            filas[0] = contador;
+            filas[1] = datos.getCiEstudiante();
+            filas[2] = datos.getNombreEs();
+            filas[3] = datos.getApellidoEs();
+            filas[4] = datos.getFechaPago();
+            filas[5] = datos.getEstado();
+            filas[6] = datos.getMonto();
+            
+
+            modelo.addRow(filas);
+            contador++;
+        }
+        tblPagos.setModel(modelo);
+    }
     
     
     
@@ -161,3 +186,4 @@ public class GestionPagos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCedula;
     // End of variables declaration//GEN-END:variables
 }
+
