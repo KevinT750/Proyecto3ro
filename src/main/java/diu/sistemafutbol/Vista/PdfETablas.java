@@ -72,7 +72,7 @@ public class PdfETablas {
             documento.add(Chunk.NEWLINE);
 
             // Definir los anchos de las columnas (en porcentaje del ancho total)
-            float[] columnWidths = {5f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 5f, 5f, 5f, 5f, 5f};
+            float[] columnWidths = {5f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 4f, 12f, 5f, 5f, 4f, 4f};
             // Crear la tabla con los anchos de columna definidos
             PdfPTable tabla = new PdfPTable(columnWidths);
             tabla.setWidthPercentage(100);
