@@ -26,7 +26,6 @@ diu\sistemafutbol\Vista\CrearEstudiante.class
 diu\sistemafutbol\Vista\Menu$1.class
 diu\sistemafutbol\Vista\MostrarUsuario$1.class
 diu\sistemafutbol\Vista\CrearEstudiante$8.class
-diu\sistemafutbol\Modelo\Categoria.class
 diu\sistemafutbol\Vista\CrearEntrenador$2.class
 diu\sistemafutbol\Vista\VerEstudiante.class
 diu\sistemafutbol\Vista\MostarEntrenadorUsuario$2.class
@@ -44,7 +43,6 @@ diu\sistemafutbol\Vista\CrearEstudiante$2.class
 diu\sistemafutbol\Vista\Menu$5.class
 diu\sistemafutbol\Vista\MostarEntrenadorUsuario.class
 diu\sistemafutbol\Vista\MostrarUsuario$5.class
-diu\sistemafutbol\Controlador\EstudianteControlador.class
 diu\sistemafutbol\Vista\MostarEntrenador.class
 diu\sistemafutbol\Vista\VerEstudiante$10.class
 diu\sistemafutbol\Vista\Menu$2.class
@@ -61,7 +59,6 @@ diu\sistemafutbol\Vista\MostrarUsuario$2.class
 diu\sistemafutbol\Modelo\Pagos.class
 diu\sistemafutbol\Vista\MostarEntrenadorUsuario$3.class
 diu\sistemafutbol\Vista\BuscadorEstudiante$1.class
-diu\sistemafutbol\Vista\GestionPagos.class
 diu\sistemafutbol\Vista\MostarEntrenador$5.class
 diu\sistemafutbol\Vista\CrearEntrenador.class
 diu\sistemafutbol\Vista\Main.class
@@ -76,7 +73,6 @@ diu\sistemafutbol\Vista\MostrarUsuario$6.class
 diu\sistemafutbol\Vista\Login$1.class
 diu\sistemafutbol\Vista\CrearEstudiante$3.class
 diu\sistemafutbol\Vista\CrearEstudiante$6.class
-diu\sistemafutbol\Controlador\Prueba.class
 diu\sistemafutbol\Vista\BuscadorEstudiante$2.class
 diu\sistemafutbol\Vista\MenuUsuario$3.class
 diu\sistemafutbol\Vista\MostrarUsuario$3.class

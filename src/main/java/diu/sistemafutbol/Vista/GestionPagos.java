@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Belial
  */
 public class GestionPagos extends javax.swing.JInternalFrame {
+    ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
     ArrayList<Pagos> ListaPagosModelo = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
      private List<Pagos> pagosList;
@@ -46,27 +47,26 @@ public class GestionPagos extends javax.swing.JInternalFrame {
     }
     
     
-    
-    private void setDatos() {
+   private void cargarDatosEnTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblPagos.getModel();
+        modeloTabla.setRowCount(0);
 
-        Object[] filas = new Object[modelo.getColumnCount()];
-        int contador = 1;
-        for (Pagos datos : ListaPagosModelo) {
-
-            filas[0] = contador;
-            filas[1] = datos.getCiEstudiante();
-            filas[2] = datos.getNombreEs();
-            filas[3] = datos.getApellidoEs();
-            filas[4] = datos.getFechaPago();
-            filas[5] = datos.getEstado();
-            filas[6] = datos.getMonto();
-            
-
-            modelo.addRow(filas);
-            contador++;
+         PagosControlador controlador = new PagosControlador();
+        ArrayList<Object[]> listaPagos = controlador.obtenerPagos();
+        for (Object[] pago : listaPagos) {
+            modeloTabla.addRow(pago);
         }
-        tblPagos.setModel(modelo);
     }
+
+    
+    private Estudiante obtenerEstudiantePorId(int idEstudiante) {
+    for (Estudiante estudiante : listaEstudiantes) {
+        if (estudiante.getIdEstudiante() == idEstudiante) {
+            return estudiante;
+        }
+    }
+    return null; // Si no se encuentra el estudiante con el ID dado
+}
     
     
     
@@ -76,6 +76,32 @@ public class GestionPagos extends javax.swing.JInternalFrame {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+//    private void setDatos() {
+//
+//        Object[] filas = new Object[modelo.getColumnCount()];
+//        int contador = 1;
+//        for (Pagos datos : ListaPagosModelo) {
+// 
+//            filas[0] = contador;
+//            filas[1] = datos.getCiEstudiante();
+//            filas[2] = datos.getNombreEs();
+//            filas[3] = datos.getApellidoEs();
+//            filas[4] = datos.getFechaPago();
+//            filas[5] = datos.getEstado();
+//            filas[6] = datos.getMonto();
+// 
+//        }
+//    }
+ 
+ 
     
     
     @SuppressWarnings("unchecked")
@@ -85,9 +111,10 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnPagar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        btnver = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tblPagos = new javax.swing.JTable();
 
         setClosable(true);
@@ -100,10 +127,22 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTION DE PAGOS");
 
-        jButton1.setText("PAGAR");
+        btnPagar.setText("PAGAR");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel2.setText("Buscar:");
+
+        btnver.setText("VER");
+        btnver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnverActionPerformed(evt);
+            }
+        });
 
         tblPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,7 +155,7 @@ public class GestionPagos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tblPagos);
+        jScrollPane1.setViewportView(tblPagos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,16 +168,19 @@ public class GestionPagos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(118, 118, 118)
-                                .addComponent(jButton1)))
-                        .addGap(0, 95, Short.MAX_VALUE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnver, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnPagar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,10 +190,11 @@ public class GestionPagos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 176, Short.MAX_VALUE))
+                    .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 168, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,16 +217,79 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_btnPagarActionPerformed
+    
+    private void btnverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverActionPerformed
+        // TODO add your handling code here:
+   cargarDatosEnTabla();
+    }//GEN-LAST:event_btnverActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPagar;
+    private javax.swing.JButton btnver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblPagos;
     private javax.swing.JTextField txtCedula;
     // End of variables declaration//GEN-END:variables
 }
 
+
+
+
+
+
+// public void llenarTabla() {
+//        // Limpiar la tabla antes de llenarla
+//        modelo.setRowCount(0);
+//
+//        // Obtener los vehículos de la base de datos
+//        Estudiante Es = new Estudiante();
+//        PagosControlador controlador = new PagosControlador();
+//        ArrayList<Object[]> Pagos = controlador.buscarPorCI(Es);
+//
+//
+//        // Llenar la tabla con los datos de los vehículos obtenidos
+//        if (Pagos != null) {
+//            for (Object[] fila : Pagos) {
+//                modelo.addRow(fila);
+//            }
+//        }
+//    }
+
+
+
+
+
+
+
+//        // TODO add your handling code here:
+//        
+//    String cedula = (txtCedula.getText());
+//    Estudiante es = new Estudiante();
+//    es.setCiEstudiante(cedula); // Suponiendo que tienes un método setCedula en tu clase Persona
+//    
+//    // Crear una instancia de VehiculoControlador
+//    PagosControlador controlador = new PagosControlador();
+//    
+//    // Llamar al método obtenerVehiculosPorPersona del controlador
+//    ArrayList<Object[]> Pagos = controlador.buscarPorCI(cedula);
+//    
+//    // Luego, puedes usar los datos obtenidos en vehiculos para mostrarlos en la tabla
+//    // Por ejemplo, podrías actualizar la tabla con estos datos
+//    // Supongamos que tu tabla se llama tblDatosVehiculares
+//    DefaultTableModel modeloTabla = (DefaultTableModel) tblPagos.getModel();
+//    modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+//    
+//    // Luego, agregar los datos de vehiculos a la tabla
+//    for (Object[] fila : Pagos) {
+//        modeloTabla.addRow(fila);
+//        
+//    }

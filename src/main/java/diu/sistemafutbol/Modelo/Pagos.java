@@ -14,8 +14,8 @@ import java.time.LocalDate;
 public class Pagos {
     private int idPago;
     private String ciEstudiante;
-    private String NombreEs;
-    private String ApellidoEs;
+//    private String NombreEs;
+//    private String ApellidoEs;
     private LocalDate fechaPago;
     private String estado;
     private double monto;
@@ -23,42 +23,12 @@ public class Pagos {
     public Pagos() {
     }
 
-    public Pagos(int idPago, String ciEstudiante, String NombreEs, String ApellidoEs, LocalDate fechaPago, String estado, double monto) {
+    public Pagos(int idPago, String ciEstudiante, LocalDate fechaPago, String estado, double monto) {
         this.idPago = idPago;
         this.ciEstudiante = ciEstudiante;
-        this.NombreEs = NombreEs;
-        this.ApellidoEs = ApellidoEs;
         this.fechaPago = fechaPago;
         this.estado = estado;
         this.monto = monto;
-    }
-
-    
-
- 
-
-    public String getNombreEs() {
-        return NombreEs;
-    }
-
-    public void setNombreEs(String NombreEs) {
-        this.NombreEs = NombreEs;
-    }
-
-    public String getApellidoEs() {
-        return ApellidoEs;
-    }
-
-    public void setApellidoEs(String ApellidoEs) {
-        this.ApellidoEs = ApellidoEs;
-    }
-
-    public int getIdPago() {
-        return idPago;
-    }
-
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
     }
 
     public String getCiEstudiante() {
@@ -68,6 +38,19 @@ public class Pagos {
     public void setCiEstudiante(String ciEstudiante) {
         this.ciEstudiante = ciEstudiante;
     }
+
+
+   
+
+
+    public int getIdPago() {
+        return idPago;
+    }
+
+    public void setIdPago(int idPago) {
+        this.idPago = idPago;
+    }
+
 
    
 
