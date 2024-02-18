@@ -4,6 +4,13 @@
  */
 package diu.sistemafutbol.Vista;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author kevin
@@ -15,6 +22,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        ;
+
     }
 
     /**
@@ -27,7 +36,14 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         Escritorio = new javax.swing.JDesktopPane();
-        jblBienvenido = new javax.swing.JLabel();
+        jblSiguenos = new javax.swing.JLabel();
+        jblSiguenos1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Imag = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         opCrearUs = new javax.swing.JMenuItem();
@@ -37,28 +53,117 @@ public class Menu extends javax.swing.JFrame {
         opEntrenador = new javax.swing.JMenuItem();
         opEntrnador = new javax.swing.JMenuItem();
         opActualizarE = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        opCerrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
 
-        jblBienvenido.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        Escritorio.setBackground(new java.awt.Color(2, 41, 123));
+        Escritorio.setForeground(new java.awt.Color(38, 132, 57));
 
-        Escritorio.setLayer(jblBienvenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jblSiguenos.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jblSiguenos.setForeground(new java.awt.Color(255, 255, 255));
+        jblSiguenos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jblSiguenos.setText("REDES SOCIALES!");
+
+        jblSiguenos1.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jblSiguenos1.setForeground(new java.awt.Color(255, 255, 255));
+        jblSiguenos1.setText("!SIGUENOS EN NUESTRAS ");
+
+        jPanel1.setBackground(new java.awt.Color(8, 121, 238));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\Logo_de_Facebook (1).png")); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jLabel3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel3KeyPressed(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 55, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("FACEBOOK");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 160, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\Imbabura.png")); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 1, 100)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("IMBABURA S.C.");
+        jLabel4.setToolTipText("");
+
+        Imag.setPreferredSize(new java.awt.Dimension(500, 500));
+
+        Escritorio.setLayer(jblSiguenos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jblSiguenos1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Escritorio.setLayer(Imag, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jblBienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, 1253, Short.MAX_VALUE))
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(Imag, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addComponent(jblSiguenos, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jblSiguenos1)))
+                .addGap(22, 22, 22))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(624, Short.MAX_VALUE))
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Imag, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jblSiguenos1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jblSiguenos)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Estudiante");
@@ -123,13 +228,28 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(Entrenador);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\iconos.png")); // NOI18N
+        jMenu2.setMinimumSize(new java.awt.Dimension(40, 30));
+        jMenu2.setPreferredSize(new java.awt.Dimension(50, 30));
+
+        opCerrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opCerrar.setText("Cerrar Sesion");
+        opCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opCerrarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(opCerrar);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio)
+            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,9 +295,47 @@ public class Menu extends javax.swing.JFrame {
         be.show();
     }//GEN-LAST:event_opActualizarEActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jLabel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel3KeyPressed
+
+    }//GEN-LAST:event_jLabel3KeyPressed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        if (java.awt.Desktop.isDesktopSupported()) {
+            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+                try {
+
+                    java.net.URI uri = new java.net.URI("https://www.facebook.com/p/Escuela-Formativa-Imbabura-SC-100083222566266/");
+                    desktop.browse(uri);
+                } catch (IOException | URISyntaxException e) {
+                    System.out.println(e);
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if (java.awt.Desktop.isDesktopSupported()) {
+            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+                try {
+
+                    java.net.URI uri = new java.net.URI("https://www.facebook.com/p/Escuela-Formativa-Imbabura-SC-100083222566266/");
+                    desktop.browse(uri);
+                } catch (IOException | URISyntaxException e) {
+                    System.out.println(e);
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void opCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opCerrarActionPerformed
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_opCerrarActionPerformed
+    public static int contador = 1;
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -210,14 +368,52 @@ public class Menu extends javax.swing.JFrame {
         });
     }
 
+    public static void mostrarImagenes(String name) {
+        Image imagenes = new ImageIcon(name).getImage();
+        ImageIcon imagen = new ImageIcon(imagenes.getScaledInstance(900, 500, Image.SCALE_SMOOTH));
+        Imag.setIcon(imagen);
+
+    }
+
+    public static void Tiempo(int minutos, int segundos) {
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Han pasado 10 segundos");
+
+                if (contador == 10) {
+                    contador = 1; // Reinicia el contador
+                } else {
+                    contador++; // Aumenta el contador
+                }
+
+                mostrarImagenes("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\" + contador + ".jpg");
+            }
+        };
+
+        long intervalo = segundos * 1000; // Convierte segundos a milisegundos
+
+        timer.schedule(task, intervalo, intervalo); // Ejecuta el TimerTask cada 10 segundos
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Entrenador;
     public static javax.swing.JDesktopPane Escritorio;
+    public static javax.swing.JLabel Imag;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel jblBienvenido;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jblSiguenos;
+    private javax.swing.JLabel jblSiguenos1;
     private javax.swing.JMenuItem opActualizar;
     private javax.swing.JMenuItem opActualizarE;
+    private javax.swing.JMenuItem opCerrar;
     private javax.swing.JMenuItem opCrearUs;
     private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opEntrnador;

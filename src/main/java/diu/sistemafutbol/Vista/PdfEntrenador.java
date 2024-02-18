@@ -4,21 +4,20 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
-import diu.sistemafutbol.Modelo.Entrenador;
-import java.awt.Image;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.lang.model.util.Elements;
+import javax.swing.JOptionPane;
 
 public class PdfEntrenador {
 
@@ -41,7 +40,7 @@ public class PdfEntrenador {
         titulo = new Paragraph("Lista de Entrenadores");
     }
 
-    public void CrearPdf() throws DocumentException {
+    public void CrearPdf() throws DocumentException, IOException {
         try {
             archivo = new FileOutputStream("Entrenadores2024.pdf");
             PdfWriter.getInstance(documento, archivo);
@@ -97,13 +96,15 @@ public class PdfEntrenador {
             documento.add(new Paragraph("Fecha: " + fecha.now().toString()));
             documento.close();
 
-            System.out.println("Archivo creado con EXITO");
+            JOptionPane.showMessageDialog(null,"Archivo creado con EXITO");
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\Entrenadores2024.pdf";
+            abrirPDF(rutaPDF);
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println(e);
         }
     }
 
-    public void CrearPdfUsuario() throws DocumentException {
+    public void CrearPdfUsuario() throws DocumentException, IOException {
         try {
             archivo = new FileOutputStream("EntrenadoresUsuario.pdf");
             PdfWriter.getInstance(documento, archivo);
@@ -171,14 +172,15 @@ public class PdfEntrenador {
             documento.add(new Paragraph("Fecha: " + fecha.now().toString()));
             documento.close();
 
-            System.out.println("Archivo creado con EXITO");
+            JOptionPane.showMessageDialog(null,"Archivo creado con EXITO");
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\EntrenadoresAdministrador.pdf";
+            abrirPDF(rutaPDF);
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println(e);
         }
     }
-    
-    
-    public void CrearPdfAdministrador() throws DocumentException {
+
+    public void CrearPdfAdministrador() throws DocumentException, IOException {
         try {
             archivo = new FileOutputStream("EntrenadoresAdministrador.pdf");
             PdfWriter.getInstance(documento, archivo);
@@ -244,10 +246,20 @@ public class PdfEntrenador {
             documento.add(new Paragraph("Fecha: " + fecha.now().toString()));
             documento.close();
 
-            System.out.println("Archivo creado con EXITO");
+            JOptionPane.showMessageDialog(null,"Archivo creado con EXITO");
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\EntrenadoresAdministrador.pdf";
+            abrirPDF(rutaPDF);
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println(e);
         }
     }
 
+    private void abrirPDF(String rutaPDF) throws IOException {
+        File archivoPDF = new File(rutaPDF);
+        if (archivoPDF.exists()) {
+            Desktop.getDesktop().open(archivoPDF);
+        } else {
+            System.out.println("El archivo PDF no existe en la ruta especificada.");
+        }
+    }
 }

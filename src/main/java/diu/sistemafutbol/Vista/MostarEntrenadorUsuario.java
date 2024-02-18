@@ -8,6 +8,7 @@ import com.itextpdf.text.DocumentException;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -377,6 +378,8 @@ public class MostarEntrenadorUsuario extends javax.swing.JInternalFrame {
             pdf.CrearPdfUsuario();
         } catch (DocumentException ex) {
             Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MostarEntrenadorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
@@ -390,6 +393,8 @@ public class MostarEntrenadorUsuario extends javax.swing.JInternalFrame {
             pdf.CrearPdfAdministrador();
         } catch (DocumentException ex) {
             Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MostarEntrenadorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAdminActionPerformed
 
@@ -402,6 +407,8 @@ public class MostarEntrenadorUsuario extends javax.swing.JInternalFrame {
             pdf.CrearPdf();
         } catch (DocumentException ex) {
             Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MostarEntrenadorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_bntPDFActionPerformed
     public void limpiarTabla() {

@@ -57,16 +57,16 @@ public class EstudianteControlador {
 
             int res = ejecutar.executeUpdate();
             if (res > 0) {
-                System.out.println("Estudiante Creado con Exito");
+                JOptionPane.showMessageDialog(null,"Estudiante Creado con Exito");
                 ejecutar.close();
 
             } else {
 
-                System.out.println("Revise la informacion ingresada del estudiante");
+                JOptionPane.showMessageDialog(null,"Revise la informacion ingresada del estudiante");
             }
 
         } catch (SQLException e) {
-            System.out.println("COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);
+            JOptionPane.showMessageDialog(null,"COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);
         }
     }
 
@@ -236,10 +236,10 @@ public class EstudianteControlador {
 
             int res = ejecutar.executeUpdate();
             if (res > 0) {
-                System.out.println("Estudiante Actualizado con Exito");
+                JOptionPane.showMessageDialog(null,"Estudiante Actualizado con Exito");
                 ejecutar.close();
             } else {
-                System.out.println("Revise la información ingresada para actualizar");
+                JOptionPane.showMessageDialog(null,"Revise la información ingresada para actualizar");
             }
         } catch (SQLException e) {
             System.out.println(e);

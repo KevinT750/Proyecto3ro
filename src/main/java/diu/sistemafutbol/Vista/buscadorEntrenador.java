@@ -25,6 +25,7 @@ public class buscadorEntrenador extends javax.swing.JInternalFrame {
     public buscadorEntrenador() {
         initComponents();
         setModelo();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -132,17 +133,17 @@ public class buscadorEntrenador extends javax.swing.JInternalFrame {
 
     private void tbEntrenadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEntrenadorMouseClicked
         DefaultTableModel dtm = (DefaultTableModel) tbEntrenador.getModel();
-        ActualizarEntrenador ae = new ActualizarEntrenador();
-        ae.jblNumero.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 0).toString());
-        ae.txtNombre.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 2).toString());
-        ae.txtApellido.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 3).toString());
-        ae.jblCedula.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 1).toString());
-        ae.txtTelefono.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 4).toString());
-        ae.txtUsuario.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 5).toString());
-        ae.txtContrasena.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 6).toString());
-        ae.cbUsuario.setSelectedItem(dtm.getValueAt(tbEntrenador.getSelectedRow(), 7).toString());
-        Escritorio.add(ae);
-        ae.show();
+        ActualizarEntre ae = new ActualizarEntre();
+        ae.jblNumero1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 0).toString());
+        ae.txtNombre1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 2).toString());
+        ae.txtApellido1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 3).toString());
+        ae.jblCedula1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 1).toString());
+        ae.txtTelefono1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 4).toString());
+        ae.txtUsuario1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 5).toString());
+        ae.txtContrasena1.setText(dtm.getValueAt(tbEntrenador.getSelectedRow(), 6).toString());
+        ae.cbUsuario1.setSelectedItem(dtm.getValueAt(tbEntrenador.getSelectedRow(), 7).toString());
+        
+        ae.setVisible(true);
     }//GEN-LAST:event_tbEntrenadorMouseClicked
 
     public void setModelo() {

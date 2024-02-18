@@ -2,6 +2,7 @@ package diu.sistemafutbol.Vista;
 
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -23,6 +24,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
+        btnAceptar1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -67,12 +69,29 @@ public class Login extends javax.swing.JFrame {
         btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptar.setText("Aceptar");
         btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseClicked(evt);
+            }
+        });
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
-        Escritorio.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 110, 34));
+        Escritorio.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 110, 34));
+
+        btnAceptar1.setBackground(new java.awt.Color(0, 0, 102));
+        btnAceptar1.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        btnAceptar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAceptar1.setText("Usuario");
+        btnAceptar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar1ActionPerformed(evt);
+            }
+        });
+        Escritorio.add(btnAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 110, 34));
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\Icon Person (1).png")); // NOI18N
         Escritorio.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 90, 90));
@@ -96,14 +115,25 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        EntrenadorControlador ec = new EntrenadorControlador();
         Entrenador e = new Entrenador();
         e.setUsuario(txtUsuario.getText());
         e.setContrasena(txtContrasenia.getText());
-        this.dispose();
-        
         ec.inisiarSesion(e);
+        this.dispose();
+       
 
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
+        MenuUsuario mu = new MenuUsuario();
+        mu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAceptar1ActionPerformed
+
+    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -141,6 +171,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAceptar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

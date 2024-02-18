@@ -7,7 +7,10 @@ package diu.sistemafutbol.Vista;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
 import java.awt.Color;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -334,7 +337,11 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
                 jblEdad.getText(), txtCorreo.getText(),cbPosicion.getSelectedItem().toString()
                 ,cbSubPosicion.getSelectedItem().toString()
                 , txtPeso.getText(), txtAltura.getText());
-        pd.crarPdfE();
+        try {
+            pd.crarPdfE();
+        } catch (IOException ex) {
+            Logger.getLogger(ActualizarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPDFActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed

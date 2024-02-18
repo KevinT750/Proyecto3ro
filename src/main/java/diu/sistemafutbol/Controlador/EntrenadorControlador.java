@@ -53,23 +53,17 @@ public class EntrenadorControlador {
                 System.out.println("Bienvenido " + Nombre);
                 JOptionPane.showMessageDialog(null, "Bienvenido " + Nombre);
 
-                if (rol.equalsIgnoreCase("Usuario")) {
-                    MenuUsuario m = new MenuUsuario();
-                    m.setVisible(true);
-                    Login l = new Login();
-                    l.dispose();
-                } else {
+                if (rol.equalsIgnoreCase("Administrador")) {
                     Menu m = new Menu();
+                    m.mostrarImagenes("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\1.jpg");
+                    m.Tiempo(0, 10);
                     m.setVisible(true);
-                    Login l = new Login();
-                    l.dispose();
-
                 }
 
                 ejecutar.close();
                 return true;
             } else {
-                System.out.println("Usuario o Contraseña incorrecto");
+                JOptionPane.showMessageDialog(null, "Usuario o Contraseña son incorrectos, verifique y vuelva a intentar");
                 ejecutar.close();
                 return false;
             }
@@ -94,12 +88,12 @@ public class EntrenadorControlador {
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             int res = ejecutar.executeUpdate();
             if (res > 0) {
-                System.out.println("Entrenador Creado con Exito");
+                JOptionPane.showMessageDialog(null, "Entrenador Creado con Exito");
                 ejecutar.close();
 
             } else {
 
-                System.out.println("Revise la informacion ingresada");
+                JOptionPane.showMessageDialog(null, "Revise la informacion ingresada");
             }
         } catch (Exception e) {
         }
@@ -158,6 +152,7 @@ public class EntrenadorControlador {
         return null;
 
     }
+
     public ArrayList<Object[]> buscarNombre(String nombre) {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 
@@ -186,6 +181,7 @@ public class EntrenadorControlador {
         return null;
 
     }
+
     public ArrayList<Object[]> buscarCedula(String cedula) {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 
@@ -214,8 +210,7 @@ public class EntrenadorControlador {
         return null;
 
     }
-    
-    
+
     //PDF
     public ArrayList<Object[]> datosUsuario() {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
@@ -245,9 +240,7 @@ public class EntrenadorControlador {
         return null;
 
     }
-    
-    
-    
+
     public ArrayList<Object[]> datosAdministrador() {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 
@@ -276,8 +269,8 @@ public class EntrenadorControlador {
         return null;
 
     }
-    
-     public void ActualizarEntrenador(Entrenador es) {
+
+    public void ActualizarEntrenador(Entrenador es) {
 
         try {
             String SQL = "CALL actualizar_entrenador('" + es.getCedulaE()
@@ -290,12 +283,12 @@ public class EntrenadorControlador {
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             int res = ejecutar.executeUpdate();
             if (res > 0) {
-                System.out.println("Entrenador Actualizado con Exito");
+                JOptionPane.showMessageDialog(null, "Entrenador Actualizado con Exito");
                 ejecutar.close();
 
             } else {
 
-                System.out.println("Revise la informacion ingresada");
+                JOptionPane.showMessageDialog(null, "Revise la informacion ingresada");
             }
         } catch (Exception e) {
         }

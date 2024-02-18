@@ -15,10 +15,12 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -44,7 +46,7 @@ public class PdfETablas {
         titulo = new Paragraph("Lista de Estudiantes");
     }
 
-    public void crearpdfTablas() {
+    public void crearpdfTablas() throws IOException {
         try {
             archivo = new FileOutputStream("Estudiantes2024.pdf");
             PdfWriter.getInstance(documento, archivo);
@@ -164,13 +166,15 @@ public class PdfETablas {
             documento.add(new Paragraph("Fecha: " + fecha.now().toString()));
             documento.close();
 
-            System.out.println("Archivo creado con EXITO");
+            JOptionPane.showMessageDialog(null, "Archivo creado con EXITO");
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\Estudiantes2024.pdf";
+            abrirPDF(rutaPDF);
         } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }
     
-    public void crearpdfTablasCat(String cat) {
+    public void crearpdfTablasCat(String cat) throws IOException {
         try {
             Paragraph titul;
             archivo = new FileOutputStream(cat+".pdf");
@@ -316,10 +320,20 @@ public class PdfETablas {
             documento.add(new Paragraph("Fecha: " + fecha.now().toString()));
             documento.close();
 
-            System.out.println("Archivo creado con EXITO");
+            JOptionPane.showMessageDialog(null,"Archivo creado con EXITO");
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\"+ cat+".pdf";
+            abrirPDF(rutaPDF);
         } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
+    private void abrirPDF(String rutaPDF) throws IOException {
+        File archivoPDF = new File(rutaPDF);
+        if (archivoPDF.exists()) {
+            Desktop.getDesktop().open(archivoPDF);
+        } else {
+            System.out.println("El archivo PDF no existe en la ruta especificada.");
+        }
+    }
 }

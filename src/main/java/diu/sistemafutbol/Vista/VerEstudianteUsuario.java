@@ -8,12 +8,15 @@ import diu.sistemafutbol.Controlador.Controlador;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -343,7 +346,11 @@ public class VerEstudianteUsuario extends javax.swing.JInternalFrame {
         EstudianteControlador ec = new EstudianteControlador();
         lista = ec.datosEstudiante();
         PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
-        pdf.crearpdfTablas();
+        try {
+            pdf.crearpdfTablas();
+        } catch (IOException ex) {
+            Logger.getLogger(VerEstudianteUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPrebenjaminesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrebenjaminesActionPerformed
@@ -378,7 +385,11 @@ public class VerEstudianteUsuario extends javax.swing.JInternalFrame {
         }
         lista = ec.estudiantesCategoria(categoriaID);
         PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
-        pdf.crearpdfTablasCat(categoriaSeleccionada );
+        try {
+            pdf.crearpdfTablasCat(categoriaSeleccionada );
+        } catch (IOException ex) {
+            Logger.getLogger(VerEstudianteUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPrebenjaminesActionPerformed
 
     public void datosCategoria() {

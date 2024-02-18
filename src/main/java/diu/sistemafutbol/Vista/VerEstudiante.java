@@ -8,12 +8,15 @@ import diu.sistemafutbol.Controlador.Controlador;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -83,7 +86,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtEliminar = new javax.swing.JButton();
-        txtActualizar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cbCategoria = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
@@ -175,13 +177,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
 
-        txtActualizar.setText("Actualizar");
-        txtActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtActualizarActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel4.setText("Buscar po Categoria:");
 
@@ -214,7 +209,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         Escritorio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(txtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(txtEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Escritorio.setLayer(txtActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(cbCategoria, javax.swing.JLayeredPane.DEFAULT_LAYER);
         Escritorio.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -225,17 +219,8 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(307, 307, 307)
-                        .addComponent(jButton1)
-                        .addGap(100, 100, 100)
-                        .addComponent(txtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133)
-                        .addComponent(txtActualizar)))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
@@ -258,7 +243,13 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                         .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPrebenjamines)
-                .addGap(274, 274, 274))
+                .addGap(270, 270, 270))
+            .addGroup(EscritorioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(138, 138, 138)
+                .addComponent(txtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(419, 419, 419))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,11 +264,12 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(EscritorioLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(btnPrebenjamines)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnPrebenjamines)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -285,7 +277,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtActualizar)
                     .addComponent(txtEliminar)
                     .addComponent(jButton1))
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -360,12 +351,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtEliminarActionPerformed
 
-    private void txtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActualizarActionPerformed
-        actualizarDatos();
-        limpiarTabla();
-        cargarTabla();
-    }//GEN-LAST:event_txtActualizarActionPerformed
-
     private void tbDatosEsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatosEsMouseClicked
 
 
@@ -380,7 +365,11 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         EstudianteControlador ec = new EstudianteControlador();
         lista = ec.datosEstudiante();
         PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
-        pdf.crearpdfTablas();
+        try {
+            pdf.crearpdfTablas();
+        } catch (IOException ex) {
+            Logger.getLogger(VerEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPrebenjaminesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrebenjaminesActionPerformed
@@ -415,7 +404,11 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         }
         lista = ec.estudiantesCategoria(categoriaID);
         PdfETablas pdf = new PdfETablas(LocalDate.now(), lista);
-        pdf.crearpdfTablasCat(categoriaSeleccionada );
+        try {
+            pdf.crearpdfTablasCat(categoriaSeleccionada );
+        } catch (IOException ex) {
+            Logger.getLogger(VerEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPrebenjaminesActionPerformed
 
     public void datosCategoria() {
@@ -544,7 +537,6 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbDatosEs;
-    private javax.swing.JButton txtActualizar;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JButton txtEliminar;
     private javax.swing.JTextField txtNombre;

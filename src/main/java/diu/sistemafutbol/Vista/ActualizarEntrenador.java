@@ -7,7 +7,10 @@ package diu.sistemafutbol.Vista;
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
 import java.awt.Color;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -294,7 +297,11 @@ public class ActualizarEntrenador extends javax.swing.JInternalFrame {
 
     private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
         pdfEntrenadores pe = new pdfEntrenadores(LocalDate.now(), txtNombre.getText(), txtApellido.getText(),jblCedula.getText() , txtTelefono.getText());
-        pe.crarPdfAdministrador();
+        try {
+            pe.crarPdfAdministrador();
+        } catch (IOException ex) {
+            Logger.getLogger(ActualizarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPdfActionPerformed
     public void validarNP(String nombre, String apellido) {
 

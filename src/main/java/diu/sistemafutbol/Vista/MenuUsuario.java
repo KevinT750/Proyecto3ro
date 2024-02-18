@@ -30,8 +30,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        opObtenerDatos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         opMostrar = new javax.swing.JMenuItem();
+        opEntrenador = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Usuario");
@@ -40,15 +42,16 @@ public class MenuUsuario extends javax.swing.JFrame {
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1123, Short.MAX_VALUE)
+            .addGap(0, 1195, Short.MAX_VALUE)
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Estudiantes");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem1.setText("Ver Estudiantes");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +59,15 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
+
+        opObtenerDatos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opObtenerDatos.setText("Obtener Datos del Estudiante");
+        opObtenerDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opObtenerDatosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opObtenerDatos);
 
         jMenuBar1.add(jMenu1);
 
@@ -70,6 +82,15 @@ public class MenuUsuario extends javax.swing.JFrame {
         });
         jMenu2.add(opMostrar);
 
+        opEntrenador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opEntrenador.setText("Informacion del Entrenador");
+        opEntrenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opEntrenadorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(opEntrenador);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -78,9 +99,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio)
-                .addContainerGap())
+            .addComponent(Escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +120,18 @@ public class MenuUsuario extends javax.swing.JFrame {
         Escritorio.add(meu);
         meu.show();
     }//GEN-LAST:event_opMostrarActionPerformed
+
+    private void opObtenerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opObtenerDatosActionPerformed
+        BuscadorEstudianteUsuario beu = new BuscadorEstudianteUsuario();
+        Escritorio.add(beu);
+        beu.show();
+    }//GEN-LAST:event_opObtenerDatosActionPerformed
+
+    private void opEntrenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opEntrenadorActionPerformed
+       buscadorEntrenadorUsuario beu = new buscadorEntrenadorUsuario();
+       Escritorio.add(beu);
+       beu.show();
+    }//GEN-LAST:event_opEntrenadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +174,8 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opMostrar;
+    private javax.swing.JMenuItem opObtenerDatos;
     // End of variables declaration//GEN-END:variables
 }

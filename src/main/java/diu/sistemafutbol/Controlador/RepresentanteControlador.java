@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,15 +45,15 @@ public class RepresentanteControlador {
 
             int res = ejecutar.executeUpdate();
             if (res > 0) {
-                System.out.println("Representante Creado con Exito");
+                JOptionPane.showMessageDialog(null, "Representante Creado con Exito");
                 ejecutar.close();
 
             } else {
 
-                System.out.println("Revise la informacion ingresada");
+                JOptionPane.showMessageDialog(null, "Revise la informacion ingresada");
             }
         } catch (SQLException e) {
-            System.out.println("COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);
+            JOptionPane.showMessageDialog(null, "COMUNICARSE CON EL ADMINISTRADOR DEL SISTEMA" + e);
         }
 
     }

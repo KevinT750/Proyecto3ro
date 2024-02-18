@@ -361,7 +361,11 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
         lista = ec.datosEntrenador();
         PdfEntrenador pdf = new PdfEntrenador(LocalDate.now(), lista);
         try {
-            pdf.CrearPdf();
+            try {
+                pdf.CrearPdf();
+            } catch (IOException ex) {
+                Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (DocumentException ex) {
             Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -399,6 +403,8 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
             pdf.CrearPdfUsuario();
         } catch (DocumentException ex) {
             Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
@@ -411,6 +417,8 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
         try {
             pdf.CrearPdfAdministrador();
         } catch (DocumentException ex) {
+            Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(MostarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAdminActionPerformed

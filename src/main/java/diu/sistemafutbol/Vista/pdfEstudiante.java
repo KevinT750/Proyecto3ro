@@ -10,9 +10,12 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
 import java.awt.HeadlessException;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -61,9 +64,9 @@ public class pdfEstudiante {
         titulo = new Paragraph("Información de " + nombre + " " + apellido, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD));
     }
 
-    public void crarPdfE() {
+    public void crarPdfE() throws IOException {
         try {
-            archivo = new FileOutputStream("Informacion_de_" + nombre + "_" + apellido + ".pdf");
+            archivo = new FileOutputStream("Información_de_" + nombre + "_" + apellido + ".pdf");
             PdfWriter.getInstance(documento, archivo);
             documento.open();
             titulo.setAlignment(Paragraph.ALIGN_CENTER);
@@ -132,11 +135,21 @@ public class pdfEstudiante {
             documento.add(new Paragraph("Fecha: " + fecha.now().toString()));
             documento.close();
             JOptionPane.showMessageDialog(null, "Archivo Creado con Exito");
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\Información_de_" + nombre + "_" + apellido + ".pdf";
+            abrirPDF(rutaPDF);
 
         } catch (DocumentException | HeadlessException | FileNotFoundException e) {
             System.out.println(e);
         }
 
+    }
+    private void abrirPDF(String rutaPDF) throws IOException {
+        File archivoPDF = new File(rutaPDF);
+        if (archivoPDF.exists()) {
+            Desktop.getDesktop().open(archivoPDF);
+        } else {
+            System.out.println("El archivo PDF no existe en la ruta especificada.");
+        }
     }
 
 }

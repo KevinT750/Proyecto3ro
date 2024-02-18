@@ -13,12 +13,14 @@ import java.awt.Color;
  * @author kevin
  */
 public class CrearEntrenador extends javax.swing.JInternalFrame {
-    
+
     Entrenador es = new Entrenador();
-    
+
     public CrearEntrenador() {
         initComponents();
-        
+        txtUsuario.setEnabled(false);
+        txtContrasena.setEnabled(false);
+
     }
 
     /**
@@ -216,40 +218,45 @@ public class CrearEntrenador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUsuarioActionPerformed
-        
-        
-        
+        if (cbUsuario.getSelectedItem().equals("Usuario")) {
+            txtUsuario.setEnabled(false);
+            txtContrasena.setEnabled(false);
+        } else {
+            txtUsuario.setEnabled(true);
+            txtContrasena.setEnabled(true);
+        }
+
 
     }//GEN-LAST:event_cbUsuarioActionPerformed
     public void validarNP(String nombre, String apellido) {
-        
+
         String ValidaNom = "^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñ]+$";
         if (nombre.matches(ValidaNom)) {
             es.setNombreEnt(nombre);
             txtNombre.setForeground(null);
         } else {
-            
+
             txtNombre.setForeground(Color.red);
         }
-        
+
         if (apellido.matches(ValidaNom)) {
             es.setApellidoEnt(apellido);
             txtApellido.setForeground(null);
         } else {
-            
+
             txtApellido.setForeground(Color.red);
         }
     }
-    
+
     public void validarTelefono(String telefono) {
         String validar = "^09\\d+$";
-        
+
         if (telefono.matches(validar)) {
             es.setTelefono(telefono);
             txtTelefono.setForeground(null);
         }
         txtTelefono.setForeground(Color.red);
-        
+
     }
 
     public void validarCedula(String cedula) {
