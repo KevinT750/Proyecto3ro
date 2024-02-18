@@ -164,7 +164,7 @@ public class PagosControlador {
     ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
     ResultSet res = ejecutar.executeQuery();
     while (res.next()) {
-        Object[] fila = new Object[15];
+        Object[] fila = new Object[5];
         for (int i = 0; i < 5; i++) {
             fila[i] = res.getObject(i + 1);
         }

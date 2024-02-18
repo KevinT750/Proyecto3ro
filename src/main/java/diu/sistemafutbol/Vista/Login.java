@@ -32,6 +32,12 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel3.setText("CONTRASEÑA");
 
+        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseniaActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel2.setText("USUARIO");
 
@@ -120,6 +126,16 @@ public class Login extends javax.swing.JFrame {
         ec.inisiarSesion(e);
 
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
+        // TODO add your handling code here:
+         Entrenador e = new Entrenador();
+        e.setUsuario(txtUsuario.getText());
+        e.setContrasena(txtContrasenia.getText());
+        this.dispose();
+            
+        ec.inisiarSesion(e);
+    }//GEN-LAST:event_txtContraseniaActionPerformed
 
     
   

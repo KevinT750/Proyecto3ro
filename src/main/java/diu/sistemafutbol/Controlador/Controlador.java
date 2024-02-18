@@ -17,7 +17,7 @@ public class Controlador {
         //LANZAR CÓDIGO DE PRUEBA 
         try {
             //Manera de Conexión a la Base de Datos
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //Parámetros de conexión url/usuario/clave en mysql
             conexion=DriverManager.getConnection("jdbc:mysql://localhost/bddescuelafutbol2?autoReconnect=true&useSSL=false","root","24589790Br@yan");
             System.out.println("CONECTADO"); 

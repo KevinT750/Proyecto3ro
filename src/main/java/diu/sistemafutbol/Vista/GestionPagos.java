@@ -259,12 +259,13 @@ public class GestionPagos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
-//  // Verifica que el texto ingresado en el campo de texto no esté vacío
+//           // Verifica que el texto ingresado en el campo de texto no esté vacío
 //    if (!txtCedula.getText().isEmpty()) {
 //        PagosControlador pc = new PagosControlador();
 //        ArrayList<Object[]> listaTotalRegistro = pc.obtenerPagosPorEstudiante(txtCedula.getText());
+//        this.limpiarTabla();
 //        if (listaTotalRegistro != null) {
-//            this.limpiarTabla();
+//           // this.limpiarTabla();
 //            for (Object[] fila : listaTotalRegistro) {
 //                modelo.addRow(fila);
 //            }
@@ -276,8 +277,8 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         PagosControlador pc = new PagosControlador();
         ArrayList<Object[]> listaTotalRegistro = pc.obtenerPagosPorEstudiante(txtCedula.getText());
         this.limpiarTabla();
-        for (Object[] Filas : listaTotalRegistro) {
-            modelo.addRow(Filas);
+        for (Object[] Fila : listaTotalRegistro) {
+            modelo.addRow(Fila);
 
         }
         tblPagos.setModel(modelo);
