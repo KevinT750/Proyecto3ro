@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,10 +23,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Belial
  */
 public class GestionPagos extends javax.swing.JInternalFrame {
-    ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
     ArrayList<Pagos> ListaPagosModelo = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
-     private List<Pagos> pagosList;
+    // private List<Pagos> pagosList;
     
      Controlador conectar = new Controlador();
     Connection conectado = (Connection) conectar.conectar();
@@ -59,24 +59,24 @@ public class GestionPagos extends javax.swing.JInternalFrame {
     }
 
     
-    private Estudiante obtenerEstudiantePorId(int idEstudiante) {
-    for (Estudiante estudiante : listaEstudiantes) {
-        if (estudiante.getIdEstudiante() == idEstudiante) {
-            return estudiante;
-        }
+ 
+    
+    
+    private void mostrarPagosEnTabla(ArrayList<Pagos> listaPagos) {
+    DefaultTableModel modeloTabla = (DefaultTableModel) tblPagos.getModel();
+    modeloTabla.setRowCount(0);
+
+    for (Pagos pago : listaPagos) {
+        Object[] fila = new Object[6];
+        fila[0] = pago.getCiEstudiante();
+        fila[1] = pago.getNombreEs();
+        fila[2] = pago.getApellidoEs();
+        fila[3] = pago.getFechaPago();
+        fila[4] = pago.getEstado();
+        fila[5] = pago.getMonto();
+        modeloTabla.addRow(fila);
     }
-    return null; // Si no se encuentra el estudiante con el ID dado
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -123,9 +123,26 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("PAGOS");
 
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTION DE PAGOS");
+
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
 
         btnPagar.setText("PAGAR");
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +211,7 @@ public class GestionPagos extends javax.swing.JInternalFrame {
                     .addComponent(btnver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 168, Short.MAX_VALUE))
+                .addGap(0, 180, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,10 +225,7 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -227,6 +241,69 @@ public class GestionPagos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
    cargarDatosEnTabla();
     }//GEN-LAST:event_btnverActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+  // Verifica que el texto ingresado en el campo de texto no esté vacío
+    if (!txtCedula.getText().isEmpty()) {
+        PagosControlador pc = new PagosControlador();
+        ArrayList<Object[]> listaTotalRegistro = pc.obtenerPagosPorEstudiante(txtCedula.getText());
+        if (listaTotalRegistro != null) {
+            this.limpiarTabla();
+            for (Object[] fila : listaTotalRegistro) {
+                modelo.addRow(fila);
+            }
+            tblPagos.setModel(modelo);
+        }
+    }
+        
+    }//GEN-LAST:event_txtCedulaActionPerformed
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+//  // Verifica que el texto ingresado en el campo de texto no esté vacío
+//    if (!txtCedula.getText().isEmpty()) {
+//        PagosControlador pc = new PagosControlador();
+//        ArrayList<Object[]> listaTotalRegistro = pc.obtenerPagosPorEstudiante(txtCedula.getText());
+//        if (listaTotalRegistro != null) {
+//            this.limpiarTabla();
+//            for (Object[] fila : listaTotalRegistro) {
+//                modelo.addRow(fila);
+//            }
+//            tblPagos.setModel(modelo);
+//        }
+//    }
+
+
+        PagosControlador pc = new PagosControlador();
+        ArrayList<Object[]> listaTotalRegistro = pc.obtenerPagosPorEstudiante(txtCedula.getText());
+        this.limpiarTabla();
+        for (Object[] Filas : listaTotalRegistro) {
+            modelo.addRow(Filas);
+
+        }
+        tblPagos.setModel(modelo);
+
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        this.limpiarTabla();
+        cargarDatosEnTabla();
+    }//GEN-LAST:event_jPanel1MouseClicked
+    
+       private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
+        this.cargarDatosEnTabla();
+    }       
+    
+    public void limpiarTabla() {
+        modelo.setDataVector(null, new Object[] {"Cédula", "Nombres", "Apellidos", "Fecha de Pago","Estado", "Monto"});
+    }
+    
+    
+    
+    
+    
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,50 +323,3 @@ public class GestionPagos extends javax.swing.JInternalFrame {
 
 
 
-// public void llenarTabla() {
-//        // Limpiar la tabla antes de llenarla
-//        modelo.setRowCount(0);
-//
-//        // Obtener los vehículos de la base de datos
-//        Estudiante Es = new Estudiante();
-//        PagosControlador controlador = new PagosControlador();
-//        ArrayList<Object[]> Pagos = controlador.buscarPorCI(Es);
-//
-//
-//        // Llenar la tabla con los datos de los vehículos obtenidos
-//        if (Pagos != null) {
-//            for (Object[] fila : Pagos) {
-//                modelo.addRow(fila);
-//            }
-//        }
-//    }
-
-
-
-
-
-
-
-//        // TODO add your handling code here:
-//        
-//    String cedula = (txtCedula.getText());
-//    Estudiante es = new Estudiante();
-//    es.setCiEstudiante(cedula); // Suponiendo que tienes un método setCedula en tu clase Persona
-//    
-//    // Crear una instancia de VehiculoControlador
-//    PagosControlador controlador = new PagosControlador();
-//    
-//    // Llamar al método obtenerVehiculosPorPersona del controlador
-//    ArrayList<Object[]> Pagos = controlador.buscarPorCI(cedula);
-//    
-//    // Luego, puedes usar los datos obtenidos en vehiculos para mostrarlos en la tabla
-//    // Por ejemplo, podrías actualizar la tabla con estos datos
-//    // Supongamos que tu tabla se llama tblDatosVehiculares
-//    DefaultTableModel modeloTabla = (DefaultTableModel) tblPagos.getModel();
-//    modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
-//    
-//    // Luego, agregar los datos de vehiculos a la tabla
-//    for (Object[] fila : Pagos) {
-//        modeloTabla.addRow(fila);
-//        
-//    }

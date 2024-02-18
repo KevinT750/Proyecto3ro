@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PagosControlador {
-    
+  ArrayList<Pagos> PagosModelo = new ArrayList<>();
     private Pagos pagos;
     Controlador conectar = new Controlador();
     Connection conectado = (Connection) conectar.conectar();
@@ -35,18 +35,16 @@ public class PagosControlador {
         this.pagos = pagos;
     }
     
-    
-    
-    
-// public ArrayList<Object[]> datosPagos() {
-//        ArrayList<Object[]> listaTotalPagos = new ArrayList<>();
-//        try {
+  
+ 
+// 
+//    public ArrayList<Object[]> buscarPorCI(String cedula) {
+//        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 //
-//            String SQL = "call VerPagos();";
+//        try {
+//            String SQL = "call bddescuelafutbol.BuscarPersona('" + cedula + "');";
 //            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
 //            ResultSet res = ejecutar.executeQuery();
-//            //int cont = 1;
-//
 //            while (res.next()) {
 //
 //                Object[] fila = new Object[15];
@@ -55,21 +53,21 @@ public class PagosControlador {
 //
 //                }
 //                //fila[0] = cont;
-//                listaTotalPagos.add(fila);
+//                listaTotalRegistro.add(fila);
 //                //cont++;
 //            }
 //
 //            ejecutar.close();
-//            return listaTotalPagos;
+//            return listaTotalRegistro;
 //        } catch (Exception e) {
 //            System.out.println(e);
 //        }
 //
 //        return null;
-//
 //    }
- 
- 
+//    
+    
+    
     public ArrayList<Object[]> buscarPorCI(String cedula) {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 
@@ -97,6 +95,7 @@ public class PagosControlador {
 
         return null;
     }
+    
 
  public ArrayList<Object[]> obtenerPagos() {
         ArrayList<Object[]> listaPagos = new ArrayList<>();
@@ -125,6 +124,63 @@ public class PagosControlador {
 
         return listaPagos;
     }
+ 
+ 
+ 
+//   public ArrayList<Pagos> obtenerPagosPorEstudiante(int idEstudiante) {
+//        ArrayList<Pagos> listaTotalPagos = new ArrayList<>();
+//        try {
+//            // Llamada al procedimiento almacenado
+//            String SQL = "{CALL VerPagosPorEstudiante(?)}";
+//              ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+//            ResultSet res = ejecutar.executeQuery();
+//
+//            while (res.next()) {
+//                Pagos pago = new Pagos();
+//                pago.setIdPago(res.getInt("ID_PAGO"));
+//                pago.setFechaPago(res.getDate("FECHA_PAGO").toLocalDate());
+//                pago.setEstado(res.getString("Estado"));
+//                pago.setMonto(res.getDouble("Monto"));
+//                // Llena los atributos del objeto Pagos según los datos del ResultSet
+//
+//                listaTotalPagos.add(pago);
+//            }
+//
+//            ejecutar.close();
+//            return listaTotalPagos;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
+ 
+ 
+  public ArrayList<Object[]> obtenerPagosPorEstudiante(String cedula) {
+        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
+
+     try {
+    String SQL = "{CALL VerPagosPorEstudiante('" + cedula + "')}";
+    ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+    ResultSet res = ejecutar.executeQuery();
+    while (res.next()) {
+        Object[] fila = new Object[15];
+        for (int i = 0; i < 5; i++) {
+            fila[i] = res.getObject(i + 1);
+        }
+        listaTotalRegistro.add(fila);
+    }
+    ejecutar.close();
+    return listaTotalRegistro;
+} catch (Exception e) {
+    System.out.println(e);
+}
+
+        return null;
+    }
+
+ 
+ 
 }
    
     
