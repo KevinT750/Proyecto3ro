@@ -78,12 +78,20 @@
             <Property name="text" type="java.lang.String" value="Gestion de Pagos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="opVerPago">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pagos"/>
+                <Property name="text" type="java.lang.String" value="Visualizar Pago"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opVerPagoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="opRealizarPago">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Realizar Pago"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opRealizarPagoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

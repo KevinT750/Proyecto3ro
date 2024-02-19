@@ -35,37 +35,6 @@ public class PagosControlador {
         this.pagos = pagos;
     }
     
-  
- 
-// 
-//    public ArrayList<Object[]> buscarPorCI(String cedula) {
-//        ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
-//
-//        try {
-//            String SQL = "call bddescuelafutbol.BuscarPersona('" + cedula + "');";
-//            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
-//            ResultSet res = ejecutar.executeQuery();
-//            while (res.next()) {
-//
-//                Object[] fila = new Object[15];
-//                for (int i = 0; i < 7; i++) {
-//                    fila[i] = res.getObject(i + 1);
-//
-//                }
-//                //fila[0] = cont;
-//                listaTotalRegistro.add(fila);
-//                //cont++;
-//            }
-//
-//            ejecutar.close();
-//            return listaTotalRegistro;
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//
-//        return null;
-//    }
-//    
     
     
     public ArrayList<Object[]> buscarPorCI(String cedula) {
@@ -126,36 +95,6 @@ public class PagosControlador {
     }
  
  
- 
-//   public ArrayList<Pagos> obtenerPagosPorEstudiante(int idEstudiante) {
-//        ArrayList<Pagos> listaTotalPagos = new ArrayList<>();
-//        try {
-//            // Llamada al procedimiento almacenado
-//            String SQL = "{CALL VerPagosPorEstudiante(?)}";
-//              ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
-//            ResultSet res = ejecutar.executeQuery();
-//
-//            while (res.next()) {
-//                Pagos pago = new Pagos();
-//                pago.setIdPago(res.getInt("ID_PAGO"));
-//                pago.setFechaPago(res.getDate("FECHA_PAGO").toLocalDate());
-//                pago.setEstado(res.getString("Estado"));
-//                pago.setMonto(res.getDouble("Monto"));
-//                // Llena los atributos del objeto Pagos según los datos del ResultSet
-//
-//                listaTotalPagos.add(pago);
-//            }
-//
-//            ejecutar.close();
-//            return listaTotalPagos;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//    }
- 
- 
   public ArrayList<Object[]> obtenerPagosPorEstudiante(String cedula) {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 
@@ -180,6 +119,26 @@ public class PagosControlador {
     }
 
  
+  public boolean insertarPago(String cedulaEstudiante, double monto) {
+    try {
+        // Llamar al procedimiento almacenado para insertar el pago
+        String SQL = "{CALL InsertarPago(?, ?)}";
+        ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+        ejecutar.setString(1, cedulaEstudiante);
+        ejecutar.setDouble(2, monto);
+        ejecutar.executeUpdate();
+        ejecutar.close();
+        
+        return true; // Indica que el pago se insertó correctamente
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false; // Indica que hubo un error al insertar el pago
+    }
+}
+
+  
+  
+  
  
 }
    
