@@ -1,8 +1,9 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package diu.sistemafutbol.Vista;
+
 
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Estudiante;
@@ -16,16 +17,16 @@ import java.util.logging.Logger;
  *
  * @author kevin
  */
-public class ActualizarEstudiante extends javax.swing.JInternalFrame {
+public class ActualizarEstu extends javax.swing.JFrame {
 
     Estudiante es = new Estudiante();
-
-    public ActualizarEstudiante() {
+    public ActualizarEstu() {
         initComponents();
-        Estudiante.posicion(cbPosicion);
+         Estudiante.posicion(cbPosicion);
         btnActualizar.setVisible(false);
         btnActualizar.setEnabled(false);
-
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -62,13 +63,8 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         jblEdad = new javax.swing.JLabel();
         btnPDF = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-        setTitle("ACTUALIZAR USUARIO");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jblCedula1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jblCedula1.setText("Telefono:");
@@ -281,7 +277,7 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jblCedula5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPDF)
                     .addComponent(btnModificar)
@@ -294,15 +290,13 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -327,21 +321,23 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         es.setSubposicion(cbSubPosicion.getSelectedItem().toString());
         es.setCiEstudiante(jblCedula.getText());
         EstudianteControlador ec = new EstudianteControlador();
-        
+
         ec.actualizarEstudiantes(es);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
         pdfEstudiante pd= new pdfEstudiante(LocalDate.now(), txtNombre.getText(), txtApellido.getText(),
-                jblCedula.getText(), txtTelefono.getText(),
-                jblEdad.getText(), txtCorreo.getText(),cbPosicion.getSelectedItem().toString()
-                ,cbSubPosicion.getSelectedItem().toString()
-                , txtPeso.getText(), txtAltura.getText());
+            jblCedula.getText(), txtTelefono.getText(),
+            jblEdad.getText(), txtCorreo.getText(),cbPosicion.getSelectedItem().toString()
+            ,cbSubPosicion.getSelectedItem().toString()
+            , txtPeso.getText(), txtAltura.getText());
+     
         try {
             pd.crarPdfE();
         } catch (IOException ex) {
-            Logger.getLogger(ActualizarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActualizarEstu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnPDFActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -350,6 +346,41 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
         btnActualizar.setVisible(true);
         btnActualizar.setEnabled(true);
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ActualizarEstu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ActualizarEstu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ActualizarEstu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ActualizarEstu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ActualizarEstu().setVisible(true);
+            }
+        });
+    }
 
     public void validarNP(String nombre, String apellido) {
 
@@ -370,18 +401,6 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
             txtApellido.setForeground(Color.red);
         }
     }
-
-    /*public void validarTelefono(String telefono) {
-        String validar = "^09\\d+$";
-
-        if (telefono.matches(validar)) {
-            es.setTelefono(telefono);
-            txtTelefono.setForeground(null);
-        }
-        txtTelefono.setForeground(Color.red);
-
-    }*/
-
     public void validarCorreo(String correo) {
         String validar = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
         if (correo.matches(validar)) {
@@ -391,7 +410,6 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
             txtCorreo.setForeground(Color.red);
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnModificar;
@@ -400,7 +418,6 @@ public class ActualizarEstudiante extends javax.swing.JInternalFrame {
     public static javax.swing.JComboBox<String> cbSubPosicion;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jbaño;

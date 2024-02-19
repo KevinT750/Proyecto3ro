@@ -8,7 +8,6 @@ import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
 import diu.sistemafutbol.Modelo.Estudiante;
-import static diu.sistemafutbol.Vista.ActualizarEstudiante.cbPosicion;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 

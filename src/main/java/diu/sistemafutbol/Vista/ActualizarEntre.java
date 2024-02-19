@@ -6,9 +6,6 @@ package diu.sistemafutbol.Vista;
 
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
-import static diu.sistemafutbol.Vista.ActualizarEntrenador.txtApellido;
-import static diu.sistemafutbol.Vista.ActualizarEntrenador.txtNombre;
-import static diu.sistemafutbol.Vista.ActualizarEntrenador.txtTelefono;
 import java.awt.Color;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -291,11 +288,13 @@ public class ActualizarEntre extends javax.swing.JFrame {
 
     private void btnPdf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdf1ActionPerformed
         pdfEntrenadores pe = new pdfEntrenadores(LocalDate.now(), txtNombre1.getText(), txtApellido1.getText(),jblCedula1.getText() , txtTelefono1.getText());
+        
         try {
             pe.crarPdfAdministrador();
         } catch (IOException ex) {
-            Logger.getLogger(ActualizarEntrenador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ActualizarEntre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnPdf1ActionPerformed
 
     /**

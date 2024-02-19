@@ -53,6 +53,8 @@ public class Menu extends javax.swing.JFrame {
         opEntrenador = new javax.swing.JMenuItem();
         opEntrnador = new javax.swing.JMenuItem();
         opActualizarE = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        opPagos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         opCerrar = new javax.swing.JMenuItem();
 
@@ -163,7 +165,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jblSiguenos)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Estudiante");
@@ -227,6 +229,19 @@ public class Menu extends javax.swing.JFrame {
         Entrenador.add(opActualizarE);
 
         jMenuBar1.add(Entrenador);
+
+        jMenu3.setText("Gestion de Pagos");
+
+        opPagos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opPagos.setText("Pagos");
+        opPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opPagosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(opPagos);
+
+        jMenuBar1.add(jMenu3);
 
         jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\iconos.png")); // NOI18N
         jMenu2.setMinimumSize(new java.awt.Dimension(40, 30));
@@ -334,6 +349,12 @@ public class Menu extends javax.swing.JFrame {
         l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_opCerrarActionPerformed
+
+    private void opPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opPagosActionPerformed
+       GestionPagos gp = new GestionPagos();
+       Escritorio.add(gp);
+       gp.show();
+    }//GEN-LAST:event_opPagosActionPerformed
     public static int contador = 1;
 
     public static void main(String args[]) {
@@ -407,6 +428,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jblSiguenos;
@@ -418,5 +440,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opEntrnador;
     private javax.swing.JMenuItem opMostrarUs;
+    private javax.swing.JMenuItem opPagos;
     // End of variables declaration//GEN-END:variables
 }

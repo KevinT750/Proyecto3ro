@@ -8,7 +8,7 @@ import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Controlador.EstudianteControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
 import diu.sistemafutbol.Modelo.Estudiante;
-import static diu.sistemafutbol.Vista.ActualizarEstudiante.cbPosicion;
+
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -141,7 +141,7 @@ public class BuscadorEstudiante extends javax.swing.JInternalFrame {
     private void tbEstudianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEstudianteMouseClicked
         DefaultTableModel dtm = (DefaultTableModel) tbEstudiante.getModel();
 
-        ActualizarEstudiante ae = new ActualizarEstudiante();
+        ActualizarEstu ae = new ActualizarEstu();
         ae.txtNombre.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 0).toString());
         ae.txtApellido.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 1).toString());
         ae.jblEdad.setText(dtm.getValueAt(tbEstudiante.getSelectedRow(), 2).toString());
@@ -152,8 +152,7 @@ public class BuscadorEstudiante extends javax.swing.JInternalFrame {
         ae.cbPosicion.setSelectedItem(dtm.getValueAt(tbEstudiante.getSelectedRow(), 5).toString());
         ae.cbSubPosicion.setSelectedItem(dtm.getValueAt(tbEstudiante.getSelectedRow(), 6).toString());      
         ae.jblCedula.setText(txtBuscar.getText());
-        Escritorio.add(ae);
-        ae.show();
+        ae.setVisible(true);
 
     }//GEN-LAST:event_tbEstudianteMouseClicked
     private void setDatos() {

@@ -62,7 +62,7 @@ public class EstudianteControlador {
 
             } else {
 
-                JOptionPane.showMessageDialog(null,"Revise la informacion ingresada del estudiante");
+                JOptionPane.showMessageDialog(null,"Estudiante Creado con Exito");
             }
 
         } catch (SQLException e) {

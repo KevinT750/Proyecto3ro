@@ -2,6 +2,7 @@ package diu.sistemafutbol.Vista;
 
 import diu.sistemafutbol.Controlador.EntrenadorControlador;
 import diu.sistemafutbol.Modelo.Entrenador;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -44,6 +45,11 @@ public class Login extends javax.swing.JFrame {
         txtContrasenia.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         txtContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         txtContrasenia.setBorder(null);
+        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseniaActionPerformed(evt);
+            }
+        });
         Escritorio.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 310, 40));
 
         txtUsuario.setBackground(new java.awt.Color(0, 0, 102));
@@ -121,19 +127,30 @@ public class Login extends javax.swing.JFrame {
         e.setContrasena(txtContrasenia.getText());
         ec.inisiarSesion(e);
         this.dispose();
-       
+
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         MenuUsuario mu = new MenuUsuario();
         mu.setVisible(true);
+        mu.mostrarImagenes("C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\src\\main\\Imagenes\\1.jpg");
+        mu.Tiempo(0, 10);
         this.dispose();
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarMouseClicked
+
+    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
+        EntrenadorControlador ec = new EntrenadorControlador();
+        Entrenador e = new Entrenador();
+        e.setUsuario(txtUsuario.getText());
+        e.setContrasena(txtContrasenia.getText());
+        ec.inisiarSesion(e);
+        this.dispose();
+    }//GEN-LAST:event_txtContraseniaActionPerformed
 
     /**
      * @param args the command line arguments

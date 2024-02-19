@@ -40,7 +40,9 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }
 
     public void setModelo() {
-        String[] cabecera = {"Nro", "Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", "Nacionalidad", "Peso", "Estatura"};
+        String[] cabecera = {"Nro", "Cédula", "Nombres", "Apellidos", "Fecha de Nacimiento", 
+            "Telefono", "Provincia", "Canton", "Correo", "Edad", "Posicion", "SubPosicion", 
+            "Nacionalidad", "Peso", "Estatura"};
         modelo.setColumnIdentifiers(cabecera);
         tbDatosEs.setModel(modelo);
     }
@@ -458,6 +460,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
         try {
             PreparedStatement eliminar = conectado.prepareStatement("DELETE FROM estudiante WHERE CI_ESTUDIANTE = '" + valor + "'");
             eliminar.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente");
             limpiarTabla();
             cargarTabla();
         } catch (Exception e) {

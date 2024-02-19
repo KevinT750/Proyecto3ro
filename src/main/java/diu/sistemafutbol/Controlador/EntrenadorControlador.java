@@ -64,7 +64,7 @@ public class EntrenadorControlador {
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o Contraseña son incorrectos, verifique y vuelva a intentar");
-                ejecutar.close();
+                
                 return false;
             }
         } catch (Exception e) {

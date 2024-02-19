@@ -464,53 +464,6 @@ public class MostarEntrenador extends javax.swing.JInternalFrame {
         }
     }
 
-    /*public void generarEntrenador() {
-
-        try {
-            FileOutputStream ar = new FileOutputStream("Entrenadores.pdf");
-            Document d = new Document();
-            PdfWriter.getInstance(d, ar);
-            d.open();
-
-            Paragraph parrafo = new Paragraph();
-            Paragraph titulo = parrafo;
-            titulo.add("Lista de Entrenadores");
-            parrafo.add("La escuela de fútbol \"IMBABURA\" se enorgullece de "
-                    + "contar con un equipo de entrenadores altamente calificados "
-                    + "y dedicados, comprometidos con el desarrollo deportivo y personal"
-                    + " de cada estudiante. A continuación, se presenta una "
-                    + "tabla con los datos de los entrenadores");
-            titulo.setAlignment(1);
-            parrafo.setAlignment(0);
-            d.add(titulo);
-            d.add(parrafo);
-            int rowCount = tbEntrenador.getRowCount();
-            int columnCount = tbEntrenador.getColumnCount();
-
-            // Recorrer todas las filas y columnas de la tabla
-            for (int row = 0; row < rowCount; row++) {
-                for (int col = 0; col < columnCount; col++) {
-                    // Obtener el valor de la celda en la posición actual
-                    Object value = tbEntrenador.getValueAt(row, col);
-
-                    // Agregar el valor al documento PDF
-                    d.add(new Paragraph(value != null ? value.toString() : ""));
-                }
-            }
-
-            // Cerrar el documento
-            d.close();
-            File file = new File("entrenadores.pdf");
-            if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().open(file);
-            }
-
-            System.out.println("Documento PDF generado correctamente.");
-        } catch (DocumentException | IOException e) {
-            System.out.println(e);
-        }
-
-    }*/
     public ArrayList<Object[]> ObtenerDatos() {
         ArrayList<Object[]> listaEntrenadores = new ArrayList<>();
         for (int i = 1; i < modelo.getRowCount(); i++) {

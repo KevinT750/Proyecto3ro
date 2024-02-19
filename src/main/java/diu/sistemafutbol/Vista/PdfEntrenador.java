@@ -173,7 +173,7 @@ public class PdfEntrenador {
             documento.close();
 
             JOptionPane.showMessageDialog(null,"Archivo creado con EXITO");
-            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\EntrenadoresAdministrador.pdf";
+            String rutaPDF = "C:\\Users\\kevin\\OneDrive\\Documentos\\NetBeansProjects\\SistemaFutbol\\EntrenadoresUsuario.pdf";
             abrirPDF(rutaPDF);
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println(e);
