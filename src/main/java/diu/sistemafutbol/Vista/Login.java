@@ -129,12 +129,13 @@ public class Login extends javax.swing.JFrame {
 
     private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
         // TODO add your handling code here:
-         Entrenador e = new Entrenador();
-        e.setUsuario(txtUsuario.getText());
-        e.setContrasena(txtContrasenia.getText());
+
+          Entrenador es = new Entrenador();
+        es.setUsuario(txtUsuario.getText());
+        es.setContrasena(txtContrasenia.getText());
         this.dispose();
             
-        ec.inisiarSesion(e);
+        ec.inisiarSesion(es);
     }//GEN-LAST:event_txtContraseniaActionPerformed
 
     

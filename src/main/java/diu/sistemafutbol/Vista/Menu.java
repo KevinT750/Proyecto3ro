@@ -37,7 +37,8 @@ public class Menu extends javax.swing.JFrame {
         opEntrenador = new javax.swing.JMenuItem();
         opEntrnador = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        opVerPago = new javax.swing.JMenuItem();
+        opRealizarPago = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU PRINCIPAL");
@@ -115,13 +116,21 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu2.setText("Gestion de Pagos");
 
-        jMenuItem1.setText("Pagos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        opVerPago.setText("Visualizar Pago");
+        opVerPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                opVerPagoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(opVerPago);
+
+        opRealizarPago.setText("Realizar Pago");
+        opRealizarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opRealizarPagoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(opRealizarPago);
 
         jMenuBar1.add(jMenu2);
 
@@ -171,12 +180,20 @@ public class Menu extends javax.swing.JFrame {
         be.show();
     }//GEN-LAST:event_opActualizarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void opVerPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opVerPagoActionPerformed
         // TODO add your handling code here:
         GestionPagos pagos = new GestionPagos();
         Escritorio.add(pagos);
         pagos.show();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_opVerPagoActionPerformed
+
+    private void opRealizarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRealizarPagoActionPerformed
+        // TODO add your handling code here:
+        AgregarPagos pagar = new AgregarPagos();
+         Escritorio.add(pagar);
+         pagar.show();
+        
+    }//GEN-LAST:event_opRealizarPagoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,12 +236,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel jblBienvenido;
     private javax.swing.JMenuItem opActualizar;
     private javax.swing.JMenuItem opCrearUs;
     private javax.swing.JMenuItem opEntrenador;
     private javax.swing.JMenuItem opEntrnador;
     private javax.swing.JMenuItem opMostrarUs;
+    private javax.swing.JMenuItem opRealizarPago;
+    private javax.swing.JMenuItem opVerPago;
     // End of variables declaration//GEN-END:variables
 }
