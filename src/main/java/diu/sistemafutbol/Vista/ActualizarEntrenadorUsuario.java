@@ -79,7 +79,7 @@ public class ActualizarEntrenadorUsuario extends javax.swing.JInternalFrame {
         jLabel1.setText("CREAR ENTRENADOR");
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        jLabel2.setText("CEDULA:");
+        jLabel2.setText("CÉDULA:");
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         jLabel3.setText("NOMBRE:");

@@ -22,6 +22,8 @@ public class ActualizarEntre extends javax.swing.JFrame {
     Entrenador es = new Entrenador();
     public ActualizarEntre() {
         initComponents();
+        bntActualizar1.setVisible(false);
+        bntActualizar1.setEnabled(false);
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,7 +66,7 @@ public class ActualizarEntre extends javax.swing.JFrame {
         jLabel9.setText("CREAR ENTRENADOR");
 
         jLabel10.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
-        jLabel10.setText("CEDULA:");
+        jLabel10.setText("CÉDULA:");
 
         txtNombre1.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 

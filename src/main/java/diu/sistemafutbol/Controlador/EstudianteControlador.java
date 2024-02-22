@@ -105,7 +105,7 @@ public class EstudianteControlador {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
         RepresentanteControlador p = new RepresentanteControlador();
         try {
-            String SQL = "call bddescuelafutbol.BuscarPorNombre('" + Nombre + "');";
+            String SQL = "call BuscarPorNombre('" + Nombre + "')";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             ResultSet res = ejecutar.executeQuery();
             while (res.next()) {
@@ -134,7 +134,7 @@ public class EstudianteControlador {
         ArrayList<Object[]> listaTotalRegistro = new ArrayList<>();
 
         try {
-            String SQL = "call bddescuelafutbol.BuscarPersona('" + cedula + "');";
+            String SQL = "call BuscarPorCedula('" + cedula + "');";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             ResultSet res = ejecutar.executeQuery();
             while (res.next()) {

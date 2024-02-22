@@ -67,7 +67,7 @@ public class ActualizarEstu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jblCedula1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jblCedula1.setText("Telefono:");
+        jblCedula1.setText("Teléfono:");
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT", 3, 36)); // NOI18N
         jLabel9.setText("USUARIO");
@@ -90,7 +90,7 @@ public class ActualizarEstu extends javax.swing.JFrame {
         jblNombre3.setText("Correo:");
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jLabel6.setText("Posicion:");
+        jLabel6.setText("Posición:");
 
         cbPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class ActualizarEstu extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
         jblCedula6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jblCedula6.setText("SubPosicion:");
+        jblCedula6.setText("SubPosición:");
 
         jblCedula5.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jblCedula5.setText("Peso:");

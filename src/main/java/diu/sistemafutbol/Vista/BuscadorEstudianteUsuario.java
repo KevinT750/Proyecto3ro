@@ -29,7 +29,7 @@ public class BuscadorEstudianteUsuario extends javax.swing.JInternalFrame {
 
     public void setModelo() {
 
-        String[] cabecera = {"Nombre", "Apellido", "Edad","Telefono", "Correo", "Posicion", "SubPosicion", "Peso", "Altura"};
+        String[] cabecera = {"Nombre", "Apellido", "Edad","Teléfono", "Correo", "Posición", "SubPosición", "Peso", "Altura"};
         modelo.setColumnIdentifiers(cabecera);
         tbEstudiante.setModel(modelo);
     }

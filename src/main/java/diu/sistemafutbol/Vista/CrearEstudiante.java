@@ -130,7 +130,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jblNombre1.setText("Fecha de nacimiento:");
 
         jblCedula.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jblCedula.setText("Cedula:");
+        jblCedula.setText("Cédula:");
 
         txtCedula.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
@@ -138,7 +138,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jblNombre2.setText("Apellidos:");
 
         jblCedula1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jblCedula1.setText("Telefono:");
+        jblCedula1.setText("Teléfono:");
 
         txtTelefono.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
@@ -193,10 +193,10 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         jLabel5.setText("Dia");
 
         jblCedula4.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jblCedula4.setText("Canton:");
+        jblCedula4.setText("Cantón:");
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jLabel6.setText("Posicion:");
+        jLabel6.setText("Posición:");
 
         cbPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jLabel7.setText("SubPosicion:");
+        jLabel7.setText("SubPosición:");
 
         cbSubPosicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +237,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         });
 
         jblCedula7.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jblCedula7.setText("Nro Cedula:");
+        jblCedula7.setText("Nro Cédula:");
 
         txtCedulaR.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
 
@@ -519,7 +519,7 @@ public class CrearEstudiante extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
         );
 
         pack();

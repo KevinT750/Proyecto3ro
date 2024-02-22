@@ -157,6 +157,9 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             }
         });
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyTyped(evt);
             }
@@ -334,14 +337,7 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
-        EstudianteControlador ec = new EstudianteControlador();
-        ArrayList<Object[]> lista = ec.buscarPorCI(txtCedula.getText());
-        this.limpiarTabla();
-        for (Object[] Filas : lista) {
-            modelo.addRow(Filas);
-
-        }
-        tbDatosEs.setModel(modelo);
+        
     }//GEN-LAST:event_txtCedulaKeyTyped
 
     private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
@@ -412,6 +408,17 @@ public class VerEstudiante extends javax.swing.JInternalFrame {
             Logger.getLogger(VerEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPrebenjaminesActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        EstudianteControlador ec = new EstudianteControlador();
+        ArrayList<Object[]> lista = ec.buscarPorCI(txtCedula.getText());
+        this.limpiarTabla();
+        for (Object[] Filas : lista) {
+            modelo.addRow(Filas);
+
+        }
+        tbDatosEs.setModel(modelo);
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
     public void datosCategoria() {
         EstudianteControlador ec = new EstudianteControlador();

@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class PagosControlador {
 
@@ -128,7 +129,7 @@ public class PagosControlador {
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             int res = ejecutar.executeUpdate();
             if (res > 0) {
-                System.out.println("Pago realizado con exito");
+                JOptionPane.showMessageDialog(null, "Pago realizado con exito");
                 ejecutar.close();
 
             } else {

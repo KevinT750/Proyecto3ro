@@ -161,7 +161,7 @@ public class EntrenadorControlador {
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             ResultSet res = ejecutar.executeQuery();
             while (res.next()) {
-
+                System.out.println("");
                 Object[] fila = new Object[8];
                 for (int i = 0; i < 8; i++) {
                     fila[i] = res.getObject(i + 1);
